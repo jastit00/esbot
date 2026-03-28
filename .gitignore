@@ -65,3 +65,12 @@ $RECYCLE.BIN/
 
 # NFS files
 .nfs*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.venv/
+venv/
+.env

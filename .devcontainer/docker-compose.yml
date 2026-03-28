@@ -2,19 +2,18 @@ version: "3.9"
 
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/java:1-17-bullseye
+    image: mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
     container_name: esbot-backend-app
     working_dir: /workspace
     volumes:
       - ..:/workspace:cached
     command: sleep infinity
     environment:
-      # Override datasource to use the db service hostname
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/esbot
-      SPRING_DATASOURCE_USERNAME: esbot_user
-      SPRING_DATASOURCE_PASSWORD: esbot_password
+      DATABASE_URL: postgresql://esbot_user:esbot_password@db:5432/esbot
     depends_on:
       - db
+    ports:
+      - "8000:8000"
 
   db:
     image: postgres:16

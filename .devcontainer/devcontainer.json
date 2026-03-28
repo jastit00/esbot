@@ -1,37 +1,41 @@
 {
-    "name": "ESBot Development",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "name": "ESBot Development",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
-    "features": {
-      "ghcr.io/devcontainers/features/node:1": {
-        "version": "20",
-        "nodeGypDependencies": true,
-        "installYarnUsingApt": false
-      },
-      "ghcr.io/devcontainers/features/java:1": {
-        "version": "17"
-      }
-    },  
-  
-    "customizations": {
-      "vscode": {
-        "extensions": [
-          "vscjava.vscode-java-pack",
-          "vue.volar",
-          "dbaeumer.vscode-eslint",
-          "esbenp.prettier-vscode"
-        ],
-        "settings": {
-          "java.configuration.updateBuildConfiguration": "automatic"
-        }
-      }
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20",
+      "nodeGypDependencies": true,
+      "installYarnUsingApt": false
     },
-  
-    "postCreateCommand": "sudo apt-get update && curl -LsSf https://astral.sh/uv/install.sh | sh",
-    
-    "remoteUser": "root",
-    
-    "mounts": [
-      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-    ]
-  }
+    // Swapped the Java 17 feature for Python 3.12 support.
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Added Python support extensions
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+      // Removed the Java-specific VS Code setting 
+    }
+  },
+
+  // Expanded the setup command to install Python dependencies 
+  "postCreateCommand": "sudo apt-get update && curl -LsSf https://astral.sh/uv/install.sh | sh && uv pip install --system -r requirements.txt",
+
+  "remoteUser": "root",
+
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+
+  "workspaceFolder": "/workspace"
+}
