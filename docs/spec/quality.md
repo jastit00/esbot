@@ -88,3 +88,11 @@ Each layer of ESBot has a single, clearly defined responsibility and communicate
 ### 4. Automated Tests in CI Pipeline
 
 All tests run automatically on every commit and merge request. The CI pipeline enforces a minimum code coverage threshold, executes the full test suite with the AI backend replaced by a mock, and fails the build if any test fails or coverage drops ensuring that testability is continuously maintained throughout the project lifecycle.
+
+
+
+
+
+Tools used: Perplexity AI
+
+Purposes: Supporting aid for structuring and formulating the 3-step quality model tables. The selection of quality aspects, their justification, and the core argumentation were developed independently.
