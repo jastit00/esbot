@@ -95,4 +95,4 @@ All tests run automatically on every commit and merge request. The CI pipeline e
 
 Tools used: Perplexity AI
 
-Purposes: Supporting aid for structuring and formulating the 3-step quality model tables. The selection of quality aspects, their justification, and the core argumentation were developed independently.
+Purposes: Supporting aid for structuring and formulating,formatting the 3-step quality model tables. The selection of quality aspects, their justification, and the core argumentation were developed independently.
