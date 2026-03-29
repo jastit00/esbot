@@ -218,3 +218,6 @@ sessions to understand their learning progress over time.
   validated; major user actions, AI fallback events, and persistence failures must be logged.
 - LLM test doubles: Automated tests use mocked or fake AI outputs for explanations, quiz
   generation, and feedback responses.
+
+
+**AI-Generated Specification (Spec-Kit + Codex)**
