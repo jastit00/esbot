@@ -4,4 +4,4 @@ ESBot is a web-based AI learning assistant that helps students understand and pr
   
   
 
-![contextdiagram](https://github.com/jastit00/esbot/blob/assignment2/docs/spec/context.jpg)
+![contextdiagram](https://github.com/jastit00/esbot/blob/assignment2/docs/spec/img/context.jpg)
