@@ -9,6 +9,7 @@
   - Controllability
     
 - User Journeys
+  - Getting started with ESBot: Open the application for the first time, explore what the chatbot can do, and ask it a question of your choice.
   - Learning with own Material: Upload study material, request summary, ask 2-3 questions regarding the material
   - 
  
@@ -17,15 +18,17 @@ Heuristic Evaluation: Perform an Evaluation against Nielsens 10 Usability Heuris
 Cognitive Walkthrough: Perform a Cognitive Walkthrough for User Journeys
 
 # Participants and setup
- ## Target Users
+ ## Participants
   | User | Experience | Amount | Reasoning
   |-----|------|---------|----------|
   First-time users | No prior ESBot experience | 4 | Covers learnability and first-use journeys
   Regular users | Domain-familiar, frequent chatbot users | 1 | Covers efficiency and consistency
   
-- Session duration
+## Session duration
   
-- Materials
+## Materials
+  - Running ESBot Application
+  - 
   
 # Metrics and acceptance criteria
 
