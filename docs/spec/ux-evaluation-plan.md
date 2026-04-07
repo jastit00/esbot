@@ -14,9 +14,9 @@
   - Trying a Quiz: Upload study material, ask ESBot to create a quiz, answer the questions
  
 # Method set
-Questionnaire: Perform a Questionnaire on the basis of the user experience questionnaire (UEQ) and system usability scale (SUS)
-Heuristic Evaluation: Perform an Evaluation against Nielsens 10 Usability Heuristics
-Cognitive Walkthrough: Perform a Cognitive Walkthrough for User Journeys
+- Questionnaire: Perform a Questionnaire on the basis of the user experience questionnaire (UEQ) and system usability scale (SUS)
+- Heuristic Evaluation: Perform an Evaluation against Nielsens 10 Usability Heuristics
+- Cognitive Walkthrough: Perform a Cognitive Walkthrough for User Journeys
 
 # Participants and setup
  ## Participants
