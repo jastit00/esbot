@@ -13,4 +13,35 @@
   - 
  
 # Method set
-Heuristic Evaluation 
+Heuristic Evaluation: Perform an Evaluation against Nielsens 10 Usability Heuristics
+Cognitive Walkthrough: Perform a Cognitive Walkthrough for User Journeys
+
+# Participants and setup
+ ## Target Users
+  | User | Experience | Amount | Reasoning
+  |-----|------|---------|----------|
+  First-time users | No prior ESBot experience | 4 | Covers learnability and first-use journeys
+  Regular users | Domain-familiar, frequent chatbot users | 1 | Covers efficiency and consistency
+  
+- Session duration
+  
+- Materials
+  
+# Metrics and acceptance criteria
+
+# Findings template
+
+- Finding ID: 
+- Title: Short specific description
+- Description: Description of the issue and in what context or user journey it occured
+- Severity: Divided into four levels, critical(task failure), high(frustrating but with workaround), medium(), low(cosmetic issues)
+- Evidence: Material, e.g Screenshots
+- Recommendation: 
+- Status: 
+
+# Quality gate proposal
+
+
+
+
+
