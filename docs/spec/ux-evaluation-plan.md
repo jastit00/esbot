@@ -41,10 +41,11 @@
 | # | UX Factors               | Metric                                                        | Acceptance Threshold | ISO 25010 Mapping                                                          | Verification Method                                                           |
 | - | ------------------------ | ------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
 | 1 | Intuitive Operation      | Task completion rate (first-time users, no assistance)        | ≥ 90%                | Usability: Appropriateness Recognizability, Learnability                   | Cognitive Walkthrough                 |
-| 2 | Helpfulness / Efficiency | Users answering follow-up questions correctly after ESBot use | ≥ 85%                | Functional Suitability: Functional Appropriateness, Usability: Operability | UEQ (efficiency + usefulness) |
+| 2 | Helpfulness / Efficiency | Users answering follow-up questions correctly after ESBot use | ≥ 85%                | Functional Suitability: Functional Appropriateness, Usability: Operability | Questionnaire Questing regarding ESBot Helpfulness |
 | 3 | Ease of Use              | SUS Score (mean across participants)                          | ≥ 80                 | Usability: Operability, User Error Protection                              | SUS questionnaire post-session                                                |
-| 4 | Correctness              | Responses rated correct by domain expert review               | ≥ 95%                | Functional Suitability: Functional Correctness, Reliability: Maturity      | Expert Sample Review (correct / minor error / critical error)                 |
-| 5 | Controllability          | Identical inputs producing consistent outputs                 | ≥ 99%                | Usability: Operability, Reliability: Recoverability                        | Repeated input testing                                                        |
+| 4 | Ease of Use              | UEQ Score (mean across participants and categories)           | ≥ 4                  | Usability: Operability, User Error Protection                              | UEQ questionnaire post-session                                 |
+| 5 | Correctness              | Responses rated correct by domain expert review               | ≥ 95%                | Functional Suitability: Functional Correctness, Reliability: Maturity      | Expert Sample Review (correct / minor error / critical error)                 |
+| 6 | Controllability          | Identical inputs producing consistent outputs                 | ≥ 99%                | Usability: Operability, Reliability: Recoverability                        | Repeated input testing                                                        |
 
 ## Findings template
 
