@@ -33,7 +33,7 @@
   
  ### Materials
   - Running ESBot Application
-  - SUS + UEQ questionnaire
+  - Questionnaire
   - Finding Templates
   - Screenshot tool
   
