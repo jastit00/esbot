@@ -13,28 +13,28 @@
   - Learning with own Material: Upload study material, request summary, ask 2-3 questions regarding the material
   - Trying a Quiz: Upload study material, ask ESBot to create a quiz, answer the questions
  
-# Method set
+## Method set
 - Questionnaire: Perform a Questionnaire on the basis of the user experience questionnaire (UEQ) and system usability scale (SUS)
 - Heuristic Evaluation: Perform an Evaluation against Nielsens 10 Usability Heuristics
 - Cognitive Walkthrough: Perform a Cognitive Walkthrough for User Journeys
 
-# Participants and setup
- ## Participants
+## Participants and setup
+ ### Participants
   | User | Experience | Amount | Reasoning
   |-----|------|---------|----------|
   First-time users | No prior ESBot experience | 5 | Perform Questionnaires and Heuristic Evaluation
   Usability Experts | Domain-familiar | 3 | Perform Heuristic Evaluation and Cognitive Walkthroughs
   
-## Session duration
+ ### Session duration
   - 45–60 minutes per user session; 60–90 minutes for heuristic + walkthrough sessions.
   
-## Materials
+ ### Materials
   - Running ESBot Application
   - SUS + UEQ questionnaire
   - Finding Templates
   - Screenshot tool
   
-# Metrics and acceptance criteria
+## Metrics and acceptance criteria
 | # | Quality Goal             | Metric                                                        | Acceptance Threshold | ISO 25010 Mapping                                                          | Verification Method                                                           |
 | - | ------------------------ | ------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | 1 | Intuitive Operation      | Task completion rate (first-time users, no assistance)        | ≥ 90%                | Usability: Appropriateness Recognizability, Learnability                   | Think-aloud sessions, Cognitive Walkthrough                                   |
@@ -43,7 +43,7 @@
 | 4 | Correctness              | Responses rated correct by domain expert review               | ≥ 95%                | Functional Suitability: Functional Correctness, Reliability: Maturity      | Expert sample review (correct / minor error / critical error)                 |
 | 5 | Controllability          | Identical inputs producing consistent outputs                 | ≥ 99%                | Usability: Operability, Reliability: Recoverability                        | Repeated input testing                                                        |
 
-# Findings template
+## Findings template
 
 - Finding ID: 
 - Title: Short specific description
@@ -53,7 +53,7 @@
 - Recommendation: proposal for issue mitigation
 - Status: Status of issue (new, in progress, fixed)
 
-# Quality gate proposal
+## Quality gate proposal
 
 
 
