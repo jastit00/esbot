@@ -28,11 +28,9 @@ ESBot brings advantage in learning such as increasing the productivity and speed
 
 **Measurable Quality Criteria**   
 - At least 85% of users answer follow-up questions correctly after using ESBot  
-- ...
 
 **Verification Method**  
-- Controlled experiment comparing ESBot with traditional learning methods  
-- User Experience Questionnaire (UEQ) with focus on efficiency and usefulness  
+- Controlled experiment comparing ESBot with traditional learning methods
 
 ---
 
