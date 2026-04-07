@@ -35,7 +35,7 @@
   - Screenshot tool
   
 ## Metrics and acceptance criteria
-| # | Quality Goal             | Metric                                                        | Acceptance Threshold | ISO 25010 Mapping                                                          | Verification Method                                                           |
+| # | UX Factors               | Metric                                                        | Acceptance Threshold | ISO 25010 Mapping                                                          | Verification Method                                                           |
 | - | ------------------------ | ------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | 1 | Intuitive Operation      | Task completion rate (first-time users, no assistance)        | ≥ 90%                | Usability: Appropriateness Recognizability, Learnability                   | Think-aloud sessions, Cognitive Walkthrough                                   |
 | 2 | Helpfulness / Efficiency | Users answering follow-up questions correctly after ESBot use | ≥ 85%                | Functional Suitability: Functional Appropriateness, Usability: Operability | Controlled experiment vs. traditional learning, UEQ (efficiency + usefulness) |
@@ -45,10 +45,10 @@
 
 ## Findings template
 
-- Finding ID: 
+- Finding ID: Unique ID to identify issue
 - Title: Short specific description
 - Description: Description of the issue and in what context or user journey it occured
-- Severity: Divided into four levels, critical(task failure), high(frustrating but with workaround), medium(), low(cosmetic issues)
+- Severity: Divided into four levels, critical(task failure), high(factor doesnt reach acceptance threshold), medium(factor only barely reaches acceptance threshold), low(cosmetic issues)
 - Evidence: Material, e.g Screenshots
 - Recommendation: proposal for issue mitigation
 - Status: Status of issue (new, in progress, fixed)
