@@ -1,2 +1,11 @@
-fastapi
-uvicorn
+# Application
+fastapi          
+uvicorn          
+
+# Persistence
+sqlalchemy       
+psycopg2-binary  
+
+# Testing
+pytest           
+httpx            
