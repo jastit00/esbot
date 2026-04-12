@@ -16,13 +16,6 @@
 - Docker
 - VSCode + Dev Containers extension
 
-## Environment Variables
-
-| Variable | Default | Description |
-|---|---|---|
-| `DATABASE_URL` | `postgresql://esbot_user:esbot_password@localhost:5432/esbot` | PostgreSQL connection string |
-
-Copy `.env.example` to `.env` and adjust if needed. The devcontainer sets `DATABASE_URL` automatically via `docker-compose.yml`.
 
 ## Running the Backend (devcontainer)
 
