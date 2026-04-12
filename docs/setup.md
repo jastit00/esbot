@@ -6,7 +6,7 @@
 |---|---|
 | Framework | FastAPI |
 | ASGI server | uvicorn |
-| ORM / persistence | SQLAlchemy |
+| ORM / persistence | SQLModel |
 | Database (production) | PostgreSQL |
 | Database (tests) | SQLite in-memory |
 | Test framework | pytest |
@@ -16,25 +16,29 @@
 - Docker
 - VSCode + Dev Containers extension
 
+## Environment Variables
+
+| Variable | Description | Example |
+|---|---|---|
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql://esbot_user:esbot_password@db:5432/esbot` |
+
+The devcontainer sets `DATABASE_URL` automatically via `docker-compose.yml`. No manual configuration needed.
 
 ## Running the Backend (devcontainer)
 
 1. Press `Ctrl+Shift+P` → `Dev Containers: Reopen in Container`
 2. Wait for the container build and setup to finish
-3. The container automatically installs `requirements.txt` into the container Python environment
-4. Start the server:
+3. Start the server:
 
 ```bash
 uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at `http://localhost:8000`.
-
-If you do not use the Dev Container, install the dependencies with `pip install -r requirements.txt`.
+The API will be available at `http://localhost:8000`. Database tables are created automatically on startup.
 
 ## Running Tests
 
-Tests use an SQLite in-memory database.
+Tests use an SQLite in-memory database — no running PostgreSQL instance required.
 
 ```bash
 pytest
@@ -42,16 +46,27 @@ pytest
 
 Test files are located in `backend/tests/`.
 
+## Verifying the Database
+
+After starting the server, verify PostgreSQL tables were created:
+
+```bash
+docker exec -it esbot-db psql -U esbot_user -d esbot -c "\dt"
+```
+
 ## Project Structure
 
 ```
 backend/
-  app.py          # FastAPI application and routes
-  database.py     # SQLAlchemy engine reading DATABASE_URL from environment
+  app.py          # FastAPI application, lifespan, and routes
+  database.py     # SQLModel engine and session, reads DATABASE_URL from environment
+  models.py       # SQLModel table definitions
   tests/
-    conftest.py   # sets DATABASE_URL to SQLite in-memory for all tests
-    test_smoke.py # smoke tests for core endpoints
+    conftest.py   # configures SQLite in-memory engine for all tests
+    test_smoke.py # smoke tests for core endpoints and database connectivity
 pytest.ini        # pytest configuration
-.env.example      # example environment variables
 requirements.txt  # dependencies
+.devcontainer/
+  devcontainer.json   # VSCode dev container configuration
+  docker-compose.yml  # app + PostgreSQL services
 ```

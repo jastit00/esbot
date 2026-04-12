@@ -74,5 +74,5 @@ class EvaluationResult(SQLModel, table=True):
     text: str = Field(min_length=1, nullable=False)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), nullable=False)
     
-    submitted_answer_id: int = Field(foreign_key="submitted_answers.id", nullable=False)
+    submitted_answer_id: int = Field(foreign_key="submitted_answers.id", unique=True)
     submitted_answer: SubmittedAnswer = Relationship(back_populates="evaluation_result")

@@ -7,5 +7,5 @@ sqlmodel
 psycopg2-binary  
 
 # Testing
-pytest           
-httpx            
+pytest
+httpx

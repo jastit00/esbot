@@ -1,41 +1,20 @@
 {
   "name": "ESBot Development",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20",
-      "nodeGypDependencies": true,
-      "installYarnUsingApt": false
-    },
-    // Swapped the Java 17 feature for Python 3.12 support.
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
-    }
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
 
   "customizations": {
     "vscode": {
       "extensions": [
-        // Added Python support extensions
         "ms-python.python",
         "ms-python.vscode-pylance",
         "vue.volar",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode"
       ]
-      // Removed the Java-specific VS Code setting 
     }
   },
 
-  // Install the Python dependencies directly into the container environment
-  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
-
-  "remoteUser": "root",
-
-  "mounts": [
-    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-  ],
-
-  "workspaceFolder": "/workspace"
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && sudo $HOME/.local/bin/uv pip install --system -r requirements.txt"
 }

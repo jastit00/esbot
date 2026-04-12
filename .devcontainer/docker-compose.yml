@@ -3,7 +3,7 @@ version: "3.9"
 services:
   app:
     image: mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
-    container_name: esbot-backend-app
+    container_name: esbot-backend
     working_dir: /workspace
     volumes:
       - ..:/workspace:cached
