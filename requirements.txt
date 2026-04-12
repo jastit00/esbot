@@ -3,7 +3,7 @@ fastapi
 uvicorn          
 
 # Persistence
-sqlalchemy       
+sqlmodel
 psycopg2-binary  
 
 # Testing
