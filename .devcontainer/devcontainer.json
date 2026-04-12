@@ -28,8 +28,8 @@
     }
   },
 
-  // Expanded the setup command to install Python dependencies 
-  "postCreateCommand": "sudo apt-get update && curl -LsSf https://astral.sh/uv/install.sh | sh && uv pip install --system -r requirements.txt",
+  // Install the Python dependencies directly into the container environment
+  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
 
   "remoteUser": "root",
 

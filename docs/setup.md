@@ -21,13 +21,16 @@
 
 1. Press `Ctrl+Shift+P` → `Dev Containers: Reopen in Container`
 2. Wait for the container build and setup to finish
-3. Start the server:
+3. The container automatically installs `requirements.txt` into the container Python environment
+4. Start the server:
 
 ```bash
 uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at `http://localhost:8000`.
+
+If you do not use the Dev Container, install the dependencies with `pip install -r requirements.txt`.
 
 ## Running Tests
 
