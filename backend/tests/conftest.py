@@ -1,11 +1,24 @@
+import pytest
+from fastapi.testclient import TestClient
 from sqlalchemy.pool import StaticPool
-from sqlmodel import SQLModel, create_engine
-import backend.models 
-import backend.database
+from sqlmodel import SQLModel, Session, create_engine
 
-backend.database.engine = create_engine(
-    "sqlite:///:memory:",
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool,
-)
-SQLModel.metadata.create_all(backend.database.engine)
+from backend.app import app
+from backend.database import get_session
+
+
+@pytest.fixture(name="session")
+def session_fixture():
+    engine = create_engine(
+        "sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool
+    )
+    SQLModel.metadata.create_all(engine)
+    with Session(engine) as session:
+        yield session
+
+
+@pytest.fixture(name="client")
+def client_fixture(session: Session):
+    app.dependency_overrides[get_session] = lambda: session
+    yield TestClient(app)
+    app.dependency_overrides.clear()
