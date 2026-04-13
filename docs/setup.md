@@ -38,7 +38,7 @@ The API will be available at `http://localhost:8000`. Database tables are create
 
 ## Running Tests
 
-Tests use an SQLite in-memory database — no running PostgreSQL instance required.
+Tests use an SQLite in-memory database: no running PostgreSQL instance required.
 
 ```bash
 pytest
@@ -48,7 +48,7 @@ Test files are located in `backend/tests/`.
 
 ## Verifying the Database
 
-After starting the server, verify PostgreSQL tables were created:
+After starting the server, verify PostgreSQL tables were created correctly via:
 
 ```bash
 docker exec -it esbot-db psql -U esbot_user -d esbot -c "\dt"
@@ -58,15 +58,16 @@ docker exec -it esbot-db psql -U esbot_user -d esbot -c "\dt"
 
 ```
 backend/
-  app.py          # FastAPI application, lifespan, and routes
-  database.py     # SQLModel engine and session, reads DATABASE_URL from environment
-  models.py       # SQLModel table definitions
-  tests/
-    conftest.py   # configures SQLite in-memory engine for all tests
-    test_smoke.py # smoke tests for core endpoints and database connectivity
-pytest.ini        # pytest configuration
-requirements.txt  # dependencies
+├── app.py           # FastAPI application, lifespan, and routes
+├── database.py      # SQLModel engine and session
+├── models.py        # SQLModel table definitions
+└── tests/
+    ├── conftest.py          # session and client fixtures with SQLite in-memory DB
+    ├── test_smoke.py        # smoke test for the root endpoint
+    └── test_user_session.py # unit tests for UserSession entity
+pytest.ini           # pytest configuration
+requirements.txt     # dependencies
 .devcontainer/
-  devcontainer.json   # VSCode dev container configuration
-  docker-compose.yml  # app + PostgreSQL services
+├── devcontainer.json    # VSCode dev container configuration
+└── docker-compose.yml   # app + PostgreSQL services
 ```

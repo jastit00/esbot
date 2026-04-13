@@ -8,6 +8,4 @@ def test_root(client: TestClient):
     assert client.get("/").status_code == 200
 
 
-def test_session_can_be_created(session: Session):
-    session.add(UserSession())
-    session.commit()
+
