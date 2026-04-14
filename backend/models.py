@@ -1,3 +1,7 @@
+"""
+ai wurde für syntax verwendet
+"""
+
 from typing import List, Optional
 from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field, Relationship
@@ -76,3 +80,4 @@ class EvaluationResult(SQLModel, table=True):
     
     submitted_answer_id: int = Field(foreign_key="submitted_answers.id", unique=True)
     submitted_answer: SubmittedAnswer = Relationship(back_populates="evaluation_result")
+
