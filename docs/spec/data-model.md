@@ -38,24 +38,9 @@ ESBot uses a relational persistence model mapped to PostgreSQL via SQLModel/SQLA
 - `created_at` is generated automatically in UTC.
 - `EvaluationResult.is_correct` stores the evaluation outcome as a boolean.
 
-## Text-Based ER Diagram
+## Entity Relationship Diagram
 
-```text
-UserSession
-  1 ───< Message
-  1 ───< QuizRequest
-  1 ───< QuizItem
-  1 ───< SubmittedAnswer
-
-QuizRequest
-  1 ───< QuizItem
-
-QuizItem
-  1 ───< SubmittedAnswer
-
-SubmittedAnswer
-  1 ─── 1 EvaluationResult
-```
+![erdiagram](https://github.com/jastit00/esbot/blob/assignment2/docs/spec/img/ESbotER.png)
 
 ## Design Rationale
 The model is intentionally compact and focuses on the minimum set of entities needed for the ESBot baseline. It captures conversation history, quiz lifecycle, user responses, and evaluation feedback without introducing extra abstraction layers or denormalized storage.
