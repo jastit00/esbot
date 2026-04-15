@@ -4,6 +4,7 @@ from datetime import timezone
 from backend.models import UserSession, Message
 
 class TestUserSessions(unittest.TestCase):
+
     def test_user_session_id_defaults_to_none(self):
         user_session = UserSession()
         self.assertIsNone(user_session.id)
@@ -21,7 +22,7 @@ class TestUserSessions(unittest.TestCase):
 
     def test_user_session_can_have_relationship(self):
         user_session = UserSession()
-        message = Message(content="example content", role="user", session_id=1)
+        message = Message(content="example content", role="user", session=user_session)
         
         user_session.messages = [message]
         message.session = user_session
@@ -33,14 +34,22 @@ class TestUserSessions(unittest.TestCase):
     
     def test_user_session_can_have_multiple_messages(self):
         user_session = UserSession()
-        message1 = Message(content="test1", role="user", session_id=1)
-        message2 = Message(content="test2", role="admin", session_id=2)
-
+        message1 = Message(content="test1", role="user", session=user_session)
+        message2 = Message(content="test2", role="admin", session=user_session)
         user_session.messages = [message1, message2]
-        message1.session = user_session
-        message2.session = user_session
         
         self.assertEqual(len(user_session.messages), 2)
         self.assertEqual(user_session.messages[0], message1)
         self.assertEqual(user_session.messages[1], message2)
         self.assertEqual(message1.session, message2.session)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+
+"""
+Tool Used: Windsurf SWE-1.6
+Purpose: Help what can be compared in UserSession-Relationship Test
+"""
