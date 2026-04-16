@@ -64,7 +64,7 @@ backend/
 └── tests/
     ├── conftest.py          # session and client fixtures with SQLite in-memory DB
     ├── test_smoke.py        # smoke test for the root endpoint
-    └── test_user_session.py # unit tests for UserSession entity
+    └── test_session.py      # unit tests for Session entity
 pytest.ini           # pytest configuration
 requirements.txt     # dependencies
 .devcontainer/

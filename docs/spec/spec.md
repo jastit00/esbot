@@ -170,7 +170,7 @@ sessions to understand their learning progress over time.
 - **Learning Session**: A stored learning interaction containing the session identity, student
   context, creation time, update time, and related messages or activities.
 - **Message**: A single user or assistant chat entry within a learning session, including content,
-  sequence, role, and timestamps.
+  sequence, and timestamps.
 - **Quiz**: A set of generated practice questions tied to a topic or learning session.
 - **Quiz Answer Submission**: A student's submitted answers for a generated quiz, linked to the
   corresponding session and quiz.

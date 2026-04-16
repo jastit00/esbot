@@ -6,7 +6,7 @@ This document defines the core persistence model for ESBot. The goal is a minima
 ## Final Entity List
 The selected core entities are:
 
-- `UserSession`
+- `Session`
 - `Message`
 - `QuizRequest`
 - `QuizItem`
@@ -23,10 +23,10 @@ ESBot uses a relational persistence model mapped to PostgreSQL via SQLModel/SQLA
 
 ## Relationship Cardinalities
 
-- `UserSession` 1 - n `Message`
-- `UserSession` 1 - n `QuizRequest`
-- `UserSession` 1 - n `QuizItem`
-- `UserSession` 1 - n `SubmittedAnswer`
+- `Session` 1 - n `Message`
+- `Session` 1 - n `QuizRequest`
+- `Session` 1 - n `QuizItem`
+- `Session` 1 - n `SubmittedAnswer`
 - `QuizRequest` 1 - n `QuizItem`
 - `QuizItem` 1 - n `SubmittedAnswer`
 - `SubmittedAnswer` 1 - 1 `EvaluationResult`

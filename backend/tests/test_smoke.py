@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from sqlmodel import Session
 
-from backend.models import UserSession
+from backend.models import Session
 
 
 def test_root(client: TestClient):
