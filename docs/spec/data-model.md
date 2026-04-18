@@ -40,7 +40,7 @@ ESBot uses a relational persistence model mapped to PostgreSQL via SQLModel/SQLA
 
 ## Entity Relationship Diagram
 
-![erdiagram](https://github.com/jastit00/esbot/blob/assignment4/docs/spec/img/ESbotER.png)
+![erdiagram](https://github.com/jastit00/esbot/blob/assignment5/docs/spec/img/EntityRelationsship.png)
 
 ## Design Rationale
 The model is intentionally compact and focuses on the minimum set of entities needed for the ESBot baseline. It captures conversation history, quiz lifecycle, user responses, and evaluation feedback without introducing extra abstraction layers or denormalized storage.
