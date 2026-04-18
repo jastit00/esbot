@@ -36,4 +36,5 @@ Feature: Ask Questions About Learning Material
     When the system receives an answer from the AI engine
     And the answer is detected as off-topic or unusable
     Then the system retries once with an improved prompt
-    Or the system informs the student that no suitable explanation can be generated
+    When the system fails with the improved prompt
+    Then the system informs the student that no suitable explanation can be generated
