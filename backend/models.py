@@ -1,6 +1,4 @@
-"""
-ai wurde für syntax verwendet
-"""
+
 
 from typing import List, Optional
 from datetime import datetime, timezone
@@ -120,4 +118,10 @@ class EvaluationResult(SQLModel, table=True):
 """
 Tool Used: Windsurf SWE-1.6 & Tab Completion
 Purpose: Help writing validate_not_null function & field validators
+"""
+
+"""
+AI-Disclaimer:
+GPT-5.3-Codex wurde zur Syntax-Vervollstaendigung und als Unterstuetzung bei
+der Strukturierung von Modellklassen verwendet. 
 """
