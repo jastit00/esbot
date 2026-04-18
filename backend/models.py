@@ -21,6 +21,9 @@ class Session(SQLModel, table=True):
     
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), nullable=False)
+
+    session_token: str = Field(index=True, unique=True, nullable=False)
+    
     
     messages: List["Message"] = Relationship(back_populates="session")
     quiz_requests: List["QuizRequest"] = Relationship(back_populates="session")
