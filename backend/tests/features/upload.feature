@@ -4,6 +4,7 @@ Feature: Upload Learning Material
     so that EsBot can use it for Interactions
 
 Scenario: Sucessful Upload
+    Given the student has access to the running EsBot
     When the student navigates to "Upload Material" 
     And the student selects one or more files 
     And the student confirms the upload
@@ -14,6 +15,7 @@ Scenario: Sucessful Upload
     And the student is offered next actions like "summarize", "ask questions", or "request test"
 
 Scenario: Upload fails due to invalid or unsupported material
+    Given the student has access to the running EsBot
     When the student navigates to "Upload Material"
     And the student selects an unsupported file type or oversized file or unreadable content
     And the student confirms the upload
@@ -22,6 +24,7 @@ Scenario: Upload fails due to invalid or unsupported material
     And the system asks the student to adjust or upload different material
 
  Scenario: Upload fails due to storage error
+    Given the student has access to the running EsBot
     When the student navigates to "Upload Material"
     And the student selects valid material
     And the student confirms the upload

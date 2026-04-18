@@ -1,10 +1,11 @@
 Feature: Ask Questions About Learning Material
-  As a student
-  I want to ask questions about my uploaded material
-  So that I receive clear, contextual explanations
+    As a student
+    I want to ask questions about my uploaded material
+    So that I receive clear, contextual explanations
 
   Scenario: Successful question answering with relevant material
-    Given the student has previously uploaded at least one material
+    Given the student has access to the running EsBot
+    And the student has previously uploaded at least one material
     When the student submits a question about the material
     Then the system receives the question with the current context
     And the system determines the relevant material
@@ -17,8 +18,8 @@ Feature: Ask Questions About Learning Material
     And the system displays the explanation in the chat interface
 
   Scenario: Material retrieval fails
-    Given the student has previously uploaded at least one material
-    When the student submits a question about the material
+    Given the student has access to the running EsBot
+    And the student has previously uploaded at least one material
     Then the system receives the question with the current context
     And the system identifies the relevant material
     But the system cannot retrieve the material from storage
@@ -26,7 +27,8 @@ Feature: Ask Questions About Learning Material
     And the system suggests retrying or re-uploading the material
 
   Scenario: AI answer is off-topic or unclear
-    Given the student has previously uploaded at least one material
+    Given the student has access to the running EsBot
+    And the student has previously uploaded at least one material
     When the student submits a question about the material
     Then the system receives the question with the current context
     And the system determines the relevant material
