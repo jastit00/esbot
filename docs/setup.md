@@ -40,15 +40,26 @@ The API will be available at `http://localhost:8000`. Database tables are create
 
 Tests use an SQLite in-memory database: no running PostgreSQL instance required.
 
+**Unit tests only:**
 ```bash
 pytest
+```
+
+**BDD acceptance tests only:**
+```bash
+behave backend/tests/features/
+```
+
+**Full test suite (unit + BDD):**
+```bash
+make test
 ```
 
 Test files are located in `backend/tests/`.
 
 ## Verifying the Database
 
-After starting the server, verify PostgreSQL tables were created correctly via:
+After starting the server, verify PostgreSQL tables were created correctly via (execute locally):
 
 ```bash
 docker exec -it esbot-db psql -U esbot_user -d esbot -c "\dt"

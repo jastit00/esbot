@@ -16,5 +16,5 @@
     }
   },
 
-  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && sudo $HOME/.local/bin/uv pip install --system -r requirements.txt"
+  "postCreateCommand": "pip install -r requirements.txt"
 }
