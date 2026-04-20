@@ -16,8 +16,8 @@ def step_impl_1_7(context):
 
 @then("the system receives a list of questions")
 def step_impl_1_9(context):
-    context.questions = ["What is the main idea of the document?", "List three key points from the material."]
-    assert hasattr(context, "questions")
+    context.questions = context.quiz_service.generate("selected material")
+    assert hasattr(context, "questions") and len(context.questions) > 0
 
 @then("the system validates and structures the quiz")
 def step_impl_1_10(context):

@@ -21,6 +21,7 @@ def step_impl_1_4(context):
 
 @then("the system stores the material in persistent storage")
 def step_impl_1_5(context):
+    context.materials.extend(context.selected_files)
     context.storage_success = True
 
 @then("the system links the material to the student context")

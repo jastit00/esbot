@@ -22,7 +22,9 @@ def step_impl_1_7(context):
 
 @then('the system receives an answer')
 def step_impl_1_9(context):
-    context.answer = "This is a clear, contextual explanation based on the material."
+    context.answer = context.question_service.handle_question(
+        context.question, context.material_context
+    )
     assert context.answer is not None
 
 @then('the system validates and structures the answer')
@@ -32,8 +34,6 @@ def step_impl_1_10(context):
 
 @then('the system stores the question and answer in session history')
 def step_impl_1_11(context):
-    if not hasattr(context, 'session_history'):
-        context.session_history = []
     context.session_history.append({
         "question": context.question,
         "answer": context.validated_answer
@@ -52,6 +52,7 @@ def step_impl_2_4(context):
 @step('the system cannot retrieve the material from storage')
 def step_impl_2_5(context):
     context.retrieval_success = False
+    context.ai.should_fail = True
     context.answer = None
 
 @then('the system informs the student about the failure')
@@ -67,7 +68,10 @@ def step_impl_2_7(context):
 
 @when('the system receives an answer from the AI engine')
 def step_impl_3_9(context):
-    context.answer = "This is an off-topic answer."
+    context.ai.should_be_off_topic = True
+    context.answer = context.question_service.handle_question(
+        context.question, context.material_context
+    )
 
 @when('the answer is detected as off-topic or unusable')
 def step_impl_3_10(context):
