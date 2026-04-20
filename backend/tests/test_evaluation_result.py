@@ -2,7 +2,7 @@ import unittest
 from datetime import timezone
 from pydantic import ValidationError
 
-from backend.models import EvaluationResult, Session, QuizRequest, QuizItem, SubmittedAnswer, FieldNotNullError
+from backend.models import EvaluationResult, Session, QuizRequest, QuizItem, SubmittedAnswer
 
 class TestEvaluationResult(unittest.TestCase):
 
@@ -49,7 +49,7 @@ class TestEvaluationResult(unittest.TestCase):
         quiz_request = QuizRequest(topic="example topic", session=session)
         quiz_item = QuizItem(text="example text", session=session, quiz_request=quiz_request)
         submitted_answer = SubmittedAnswer(text="example text", session=session, quiz_item=quiz_item)
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             EvaluationResult(is_correct=True, text=None, submitted_answer=submitted_answer)
 
 
@@ -58,12 +58,12 @@ class TestEvaluationResult(unittest.TestCase):
         quiz_request = QuizRequest(topic="example topic", session=session)
         quiz_item = QuizItem(text="example text", session=session, quiz_request=quiz_request)
         submitted_answer = SubmittedAnswer(text="example text", session=session, quiz_item=quiz_item)
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             EvaluationResult(text="example text", submitted_answer=submitted_answer)
 
 
     def test_evaluation_result_submitted_answer_id_not_null(self):
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             EvaluationResult(is_correct=True, text="example text", submitted_answer=None)
 
 

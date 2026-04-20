@@ -123,4 +123,7 @@ class EvaluationResult(SQLModel, table=True):
 """
 Tool Used: Windsurf SWE-1.6 & Tab Completion
 Purpose: Help writing validate_not_null function & field validators
+
+Tool Used: GPT-5.3-Codex
+Purpose: Syntax-Vervollstaendigung und als Unterstuetzung bei der Strukturierung von Modellklassen
 """

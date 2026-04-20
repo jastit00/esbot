@@ -2,7 +2,7 @@ import unittest
 from datetime import timezone
 from pydantic import ValidationError
 
-from backend.models import QuizItem, QuizRequest, Session, SubmittedAnswer, FieldNotNullError
+from backend.models import QuizItem, QuizRequest, Session, SubmittedAnswer
 
 class TestQuizItem(unittest.TestCase):
 
@@ -41,20 +41,20 @@ class TestQuizItem(unittest.TestCase):
     def test_quiz_item_text_not_null(self):
         session = Session()
         quiz_request = QuizRequest(topic="example topic", session=session)
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             QuizItem(text=None, session=session, quiz_request=quiz_request)
 
 
     def test_quiz_item_quiz_request_id_not_null(self):
         session = Session()
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             QuizItem(text="example text", session=session)
 
 
     def test_quiz_item_session_id_not_null(self):
         session = Session()
         quiz_request = QuizRequest(topic="example topic", session=session)
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             QuizItem(text="example text", quiz_request=quiz_request)
 
 

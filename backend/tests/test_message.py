@@ -2,7 +2,7 @@ import unittest
 from datetime import timezone
 from pydantic import ValidationError
 
-from backend.models import Message, Session, FieldNotNullError
+from backend.models import Message, Session
 
 class TestMessage(unittest.TestCase):
     
@@ -36,12 +36,12 @@ class TestMessage(unittest.TestCase):
 
     def test_message_content_not_null(self):
         session = Session()
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             Message(content=None, session=session)
     
 
     def test_message_session_id_not_null(self):
-        with self.assertRaises(FieldNotNullError):
+        with self.assertRaises(ValidationError):
             Message(content="example content", session=None)
 
 
@@ -52,5 +52,5 @@ if __name__ == "__main__":
 
 """
 Tool used: Windsurf Tab Completion, SWE-1.6
-Purpose: Help with copy paste tasks (renaming methods); help with not null constraints
+Purpose: Help with copy paste tasks (renaming methods); help with not null error raising
 """
