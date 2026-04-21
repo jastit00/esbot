@@ -1,8 +1,6 @@
 import unittest
 from datetime import timezone
-from pydantic import ValidationError
-
-from backend.models import SubmittedAnswer,Session, QuizRequest, QuizItem
+from backend.models import SubmittedAnswer, Session, QuizRequest, QuizItem
 
 class TestSubmittedAnswer(unittest.TestCase):
 
@@ -42,26 +40,20 @@ class TestSubmittedAnswer(unittest.TestCase):
         self.assertEqual(submitted_answer.session, session)
 
 
-    def test_submitted_answer_text_not_null(self):
-        session = Session()
-        quiz_request = QuizRequest(topic="example topic", session=session)
-        quiz_item = QuizItem(text="example text", session=session, quiz_request=quiz_request)
-        with self.assertRaises(ValidationError):
-            SubmittedAnswer(text=None, session=session, quiz_item=quiz_item)
+    # SQLModel table=True bypasses Pydantic validation, so ValidationError is never raised.
+    # Instead verify the nullable=False is correctly defined on the field.
+    def test_submitted_answer_text_is_required_and_non_nullable(self):
+        field = SubmittedAnswer.model_fields["text"]
+        self.assertTrue(field.is_required())
+        self.assertFalse(field.nullable)
 
+    def test_submitted_answer_session_id_is_non_nullable(self):
+        field = SubmittedAnswer.model_fields["session_id"]
+        self.assertFalse(field.nullable)
 
-    def test_submitted_answer_quiz_item_id_not_null(self):
-        session = Session()
-        with self.assertRaises(ValidationError):
-            SubmittedAnswer(text="example text", session=session)
-
-
-    def test_submitted_answer_session_id_not_null(self):
-        session = Session()
-        quiz_request = QuizRequest(topic="example topic", session=session)
-        quiz_item = QuizItem(text="example text", session=session, quiz_request=quiz_request)
-        with self.assertRaises(ValidationError):
-            SubmittedAnswer(text="example text", quiz_item=quiz_item)
+    def test_submitted_answer_quiz_item_id_is_non_nullable(self):
+        field = SubmittedAnswer.model_fields["quiz_item_id"]
+        self.assertFalse(field.nullable)
 
 
 if __name__ == "__main__":
