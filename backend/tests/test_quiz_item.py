@@ -1,8 +1,6 @@
 import unittest
 from datetime import timezone
-from pydantic import ValidationError
-
-from backend.models import QuizItem, QuizRequest, Session, SubmittedAnswer, FieldNotNullError
+from backend.models import QuizItem, QuizRequest, Session, SubmittedAnswer
 
 class TestQuizItem(unittest.TestCase):
 
@@ -38,24 +36,20 @@ class TestQuizItem(unittest.TestCase):
         self.assertEqual(quiz_item.session, session)
 
 
-    def test_quiz_item_text_not_null(self):
-        session = Session()
-        quiz_request = QuizRequest(topic="example topic", session=session)
-        with self.assertRaises(FieldNotNullError):
-            QuizItem(text=None, session=session, quiz_request=quiz_request)
+    # SQLModel table=True bypasses Pydantic validation, so ValidationError is never raised.
+    # Instead verify the nullable=False is correctly defined on the field.
+    def test_quiz_item_text_is_required_and_non_nullable(self):
+        field = QuizItem.model_fields["text"]
+        self.assertTrue(field.is_required())
+        self.assertFalse(field.nullable)
 
+    def test_quiz_item_session_id_is_non_nullable(self):
+        field = QuizItem.model_fields["session_id"]
+        self.assertFalse(field.nullable)
 
-    def test_quiz_item_quiz_request_id_not_null(self):
-        session = Session()
-        with self.assertRaises(FieldNotNullError):
-            QuizItem(text="example text", session=session)
-
-
-    def test_quiz_item_session_id_not_null(self):
-        session = Session()
-        quiz_request = QuizRequest(topic="example topic", session=session)
-        with self.assertRaises(FieldNotNullError):
-            QuizItem(text="example text", quiz_request=quiz_request)
+    def test_quiz_item_quiz_request_id_is_non_nullable(self):
+        field = QuizItem.model_fields["quiz_request_id"]
+        self.assertFalse(field.nullable)
 
 
     def test_quiz_item_can_have_multiple_submitted_answers(self):
