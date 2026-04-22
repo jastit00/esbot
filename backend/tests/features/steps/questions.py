@@ -1,5 +1,7 @@
 from behave import when, then, step
 
+
+
 # --- Scenario 1: Successful question answering ---
 
 @when('the student submits a question about the material')
@@ -90,3 +92,9 @@ def step_impl_3_12(context):
 def step_impl_3_13(context):
     assert context.retry_answer is None
     context.final_error = "No suitable explanation could be generated."
+
+
+# *Tool Used: Claude Opus 4.6*
+# *Purpose: Unterstützung bei Syntax und Logik: Injection des MockAIInference via
+# QuestionService, Umstellen der hardcodierten Antworten auf Service-Calls,
+# Flag-Steuerung der Fehlerpfade, Anbindung an die session_history aus den Hooks.*
