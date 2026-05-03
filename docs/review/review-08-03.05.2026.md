@@ -1,7 +1,7 @@
 Low effort, easy to implement
 No meeting/scheduling needed
 
-Before the session the Prep Phase was held on 27.04.2026 
+# Before the session the Prep Phase was held on XXXXXXX!!!
 
 
 
@@ -39,7 +39,7 @@ Use this template together with the review process you selected from the present
 | **Individual preparation** | Each reviewer examines the review object for defects and other issues. Findings and their quality are reported to the moderator. The moderator consolidates findings into one document, prepares the review meeting, and derives key figures for the **Data Summary (DS)**. |
 | **Review meeting** | Reviewers decide the status of each finding. Additional findings may be collected during the meeting. The group may decide whether a **re-inspection** is necessary. If useful, an optional follow-up session (“third hour”) discusses remaining issues and lessons learned. The **Level of Findings (LoF)** is updated; comments are added; status and responsibility are assigned. |
 | **Reworking** | The author updates the review object according to findings and comments and refreshes reference documentation as needed. The author updates **LoF** status and records rework effort in the **Data Summary (DS)**. |
-| **Follow-up** | The moderator checks that all findings are handled. If no new major issues remain, the group decides whether **re-inspection** is required. Remaining key data and metrics are included in the quality documentation. The **Review Report (RR)** is finalized and handed over (e.g. to the course team / product owner). |
+
 
 ---
 
@@ -64,45 +64,47 @@ Use this template together with the review process you selected from the present
 
 | # | Review objects | Abbr. |
 |---|----------------|-------|
-| 1 | docs/esbot.md|esbot.md <!-- e.g. docs/spec/requirements.md --> | <!-- e.g. REQ --> |
-| 2 |docs/spec/requirements.md|requirements.md <!-- e.g. backend/…/SessionService.java --> | <!-- e.g. SES --> |
-| 3 | docs/spec/spec.md|spec.md<!-- optional third object --> | <!--  --> |
-| 4 |backend domain model, unit tests, BDD tests | model,unit tests, BDD tests
+| 1 | `docs/spec/requirements.md` | requirements.md |
+| 2 | `docs/spec/spec.md` | spec.md |
+| 3 | `backend/app/models/`, `backend/tests/`, `backend/features/*.feature` | models,tests,feature |
 ### 2.3 Reference documents
 
 <!-- List materials reviewers need for context (requirements baseline, architecture, API spec, course brief). Use Abbr. for cross-references. -->
 
 | # | Reference documents | Abbr. |
 |---|---------------------|-------|
-| 1 | <!-- e.g. docs/esbot.md --> | <!-- EB --> |
-| 2 | <!-- e.g. docs/spec/requirements.md --> | <!--  --> |
-| 3 | <!-- optional third reference --> | <!--  --> |
+| 1 | `docs/esbot.md` | esbot.md |
+| 2 | `docs/spec/requirements.md` | requirements.md |
+| 3 | `docs/spec/spec.md` | spec.md |
+| 4 | `backend/app/database.py`, `backend/tests/conftest.py`, `backend/features/environment.py` | database,conftest,environment |<!-- optional third reference --> | <!--  --> |
 
 ### 2.4 Checklists / scenarios
 
 <!-- Specify which checklists, reading guides, or test scenarios reviewers should follow (course checklist, OWASP skim, API contract checks). -->
 
 | # | Checklists / scenarios |
-|---|-------------------------|
-| 1 | <!-- e.g. Requirements completeness checklist (section A–D). --> |
-| 2 | <!-- e.g. REST error-handling scenario list. --> |
+|---|------------------------|
+| 1 | **Requirements completeness :** Are all requirements uniquely numbered, testable, measurable, and consistent? Are user roles defined? |
+| 2 | **BDD traceability :** Are all BDD scenarios traceable to requirements (e.g. via tag or comment)? Do scenarios follow the Given/When/Then format? |
+| 3 | **Consistency :** Does the domain model match the specified requirements? Are all implemented features described in the spec? |
+| 4 | **Code traceability :** Can unit tests and implementation be traced back to specific requirement IDs? |
+
+
 
 ### 2.5 Reviewer assignment
 
 <!-- Up to 10 reviewers: assign names and which chapters, objects, or checklists each person covers. Use Abbr. for initials or short IDs. -->
 
+### **A reveiw of a scenario always inclaudes all  Review objects!**
+
 | Reviewer | Names (and chapters / checklists or scenarios assigned to the review) | Abbr. |
 |:--------:|---------------------------------------------------------------------------|-------|
-| 1 | <!-- Assign specific reviewers to sections or checklists; include scope of review. --> | <!-- e.g. AB --> |
-| 2 | <!--  --> | <!--  --> |
-| 3 | <!--  --> | <!--  --> |
-| 4 | <!--  --> | <!--  --> |
-| 5 | <!--  --> | <!--  --> |
-| 6 | <!--  --> | <!--  --> |
-| 7 | <!--  --> | <!--  --> |
-| 8 | <!--  --> | <!--  --> |
-| 9 | <!--  --> | <!--  --> |
-| 10 | <!--  --> | <!--  --> |
+|
+| 1 |   Code traceability | Michaja |
+| 2 |  BDD traceability  | Jakob  |
+| 3 | Consistency   |  Vincent |
+| 4 |  Requirements completeness   | Jakob |
+
 
 ### 2.6 Kick-off
 
@@ -110,7 +112,7 @@ Use this template together with the review process you selected from the present
 
 | Date / time / location |
 |------------------------|
-| <!-- e.g. 2026-04-22 14:00 CET, Room X / video link --> |
+|  27.04.2026 17:30 via Discord
 
 ### 2.7 Individual preparation
 
@@ -135,9 +137,7 @@ Use this template together with the review process you selected from the present
 
 | Milestone | Planned date / time | Actual date / time |
 |-----------|---------------------|---------------------|
-| End of individual preparation | <!-- same as or before “Submission of findings by” --> | <!--  --> |
-| Rework deadline | <!--  --> | <!--  --> |
-| Follow-up / closure | <!--  --> | <!--  --> |
+| End of individual preparation |04.05.2026 <!-- same as or before “Submission of findings by” --> | |
 
 ---
 
