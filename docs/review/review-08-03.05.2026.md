@@ -97,7 +97,7 @@ Use this template together with the review process you selected from the present
 
 ### **A reveiw of a scenario always inclaudes all  Review objects!**
 
-| Reviewer | Names (and chapters / checklists or scenarios assigned to the review) | Abbr. |
+| Reviewer | Names (and chapters / checklists or scenarios assigned to the review) | Name |
 |:--------:|---------------------------------------------------------------------------|-------|
 | 1 |   Code traceability | Michaja |
 | 2 |  BDD traceability  | Jakob  |
