@@ -99,7 +99,6 @@ Use this template together with the review process you selected from the present
 
 | Reviewer | Names (and chapters / checklists or scenarios assigned to the review) | Abbr. |
 |:--------:|---------------------------------------------------------------------------|-------|
-|
 | 1 |   Code traceability | Michaja |
 | 2 |  BDD traceability  | Jakob  |
 | 3 | Consistency   |  Vincent |
