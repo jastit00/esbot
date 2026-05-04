@@ -13,7 +13,7 @@ No meeting/scheduling needed
 **Date (planned / actual):27.04.2026/05.05.2026**  
 **Moderator:** <!-- name -->  
 **Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
-**Reviewers: Jakob Strauss, Yunis Ghazali** <!-- names -->
+**Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl** <!-- names -->
 
 ---
 
@@ -148,8 +148,9 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 
 | ID | Location (file / section / module) | Summary | Type | Severity | Status | Owner | Notes / meeting decision |
 |----|-------------------------------------|---------|------|----------|--------|-------|--------------------------|
-| F-001 | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
-| F-002 | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| F-001 | `user_session.py` | How should FR5 be implemented? UserSession has no user identifier. | question | minor | open | — | FR5 not fully reflected in domain model |
+| F-002 | `message.py`, `requirements.md`, `spec.md` | `Message.role` ("user"/"bot") is not defined anywhere in requirements or spec | defect | minor | open | — | Role concept missing in specification |
+
 
 ---
 
