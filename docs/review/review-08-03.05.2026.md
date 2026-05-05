@@ -77,7 +77,7 @@ The review is based on the review template from the lecture
 
 | # | Checklists / scenarios |
 |---|------------------------|
-| 1 | **Requirements completeness :** Are all requirements uniquely numbered, testable, measurable, and consistent? Are user roles defined? |
+| 1 | **Requirements completeness :** Are all requirements uniquely numbered, testable, measurable, and consistent? |
 | 2 | **BDD traceability :** Are all BDD scenarios traceable to requirements (e.g. via tag or comment)? Do scenarios follow the Given/When/Then format? |
 | 3 | **Consistency :** Does the domain model match the specified requirements? Are all implemented features described in the spec? |
 | 4 | **Code traceability :** Can unit tests and implementation be traced back to specific requirement IDs? |
@@ -143,6 +143,11 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 |----|-------------------------------------|---------|------|----------|--------|-------|--------------------------|
 | F-001 | `user_session.py` | How should FR5 be implemented? UserSession has no user identifier. | question | minor | open | — | FR5 not fully reflected in domain model |
 | F-002 | `message.py`, `requirements.md`, `spec.md` | `Message.role` ("user"/"bot") is not defined anywhere in requirements or spec | defect | minor | open | — | Role concept missing in specification |
+| F-003 | `requirements.md`  | FR2: "Contextualized answers" is not measurable or testable. No acceptance criterion defined.                 | defect     | major    | open   | —     | Add concrete criterion, e.g. answer must reference course material |
+| F-004 | `requirements.md`  | NFR2:  "Intuitive and easy to use" is not measurable or testable. No usability metric provided.                 | defect     | major    | open   | —     | Replace with a measurable metric  |
+| F-005 | `requirements.md`  | NFR4 "Multiple concurrent users" is not measurable. No minimum number of users specified.                     | defect     | major    | open   | —     | Define a concrete load target, e.g. ≥ 50 concurrent users |
+| F-006 |`requirements.md`   | NFR5 "Stored securely" is not testable. No encryption standard, access control policy, or compliance requirement is mentioned. | defect     | minor    | open   | —     | Specify security mechanism |
+| F-007 | `requirements.md`  | NFR1 response time of 2 seconds does not specify conditions, e.g. under what load or for what request type. | defect     | minor    | open   | —     | Add conditions, e.g. "under normal load of 50 users, 95th percentile" |
 
 
 ---
