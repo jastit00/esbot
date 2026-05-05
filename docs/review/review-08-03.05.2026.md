@@ -3,9 +3,8 @@
 **Project / product: ESBot: https://github.com/Mooh9876/esbot**  
 **Review object(s): esbot documentation, requirements, tests and partial implementation**  
 **Review type: Peer Review**  
-**Date (planned / actual):27.04.2026/05.05.2026**  
-
-**Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
+**Date (planned / actual):27.04.2026/05.05.2026**
+**Author(s): Mohammed Al-Otaibi, Nils-Konstantin Lutz, Alen Osmanagic, Dominic Sehorz** <!-- name(s) -->  
 **Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl, Michaja Hummel** <!-- names -->
 
 ---
@@ -48,7 +47,7 @@ The review is based on the review template from the lecture
 | Project manager | Mooh9876 <!-- Name of project / product owner or PM. --> |
 | Quality expert / manager | -<!-- Name of quality role if applicable;  else “—”. --> |
 | Moderator | -<!-- Review moderator: owns process, schedule, consolidation. --> |
-| Author(s) |  Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz <!-- Author(s) of the review object(s); main contact for rework. --> |
+| Author(s) |  Mohammed Al-Otaibi, Nils-Konstantin Lutz, Alen Osmanagic, Dominic Sehorz <!-- Author(s) of the review object(s); main contact for rework. --> |
 
 
 ### 2.2 Review objects
@@ -59,7 +58,7 @@ The review is based on the review template from the lecture
 |---|----------------|-------|
 | 1 | `docs/spec/requirements.md` | requirements.md |
 | 2 | `docs/spec/spec.md` | spec.md |
-| 3 | `backend/app/models/`, `backend/tests/`, `backend/features/*.feature` | models,tests,feature |
+| 3 | `backend/app/models/`, `backend/tests/`, `backend/features/*.feature` | models, tests, feature |
 ### 2.3 Reference documents
 
 <!-- List materials reviewers need for context (requirements baseline, architecture, API spec, course brief). Use Abbr. for cross-references. -->
@@ -69,7 +68,7 @@ The review is based on the review template from the lecture
 | 1 | `docs/esbot.md` | esbot.md |
 | 2 | `docs/spec/requirements.md` | requirements.md |
 | 3 | `docs/spec/spec.md` | spec.md |
-| 4 | `backend/app/database.py`, `backend/tests/conftest.py`, `backend/features/environment.py` | database,conftest,environment |<!-- optional third reference --> | <!--  --> |
+| 4 | `backend/app/database.py`, `backend/tests/conftest.py`, `backend/features/environment.py` | database, conftest, environment |<!-- optional third reference --> | <!--  --> |
 
 ### 2.4 Checklists / scenarios
 
@@ -88,7 +87,7 @@ The review is based on the review template from the lecture
 
 <!-- Up to 10 reviewers: assign names and which chapters, objects, or checklists each person covers. Use Abbr. for initials or short IDs. -->
 
-### **A reveiw of a scenario always inclaudes all  Review objects!**
+### **A review of a scenario always includes all review objects!**
 
 | Reviewer | Names (and chapters / checklists or scenarios assigned to the review) | Name |
 |:--------:|---------------------------------------------------------------------------|-------|
