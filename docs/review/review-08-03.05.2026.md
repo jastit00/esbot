@@ -6,7 +6,7 @@
 **Date (planned / actual):27.04.2026/05.05.2026**  
 **Moderator:** <!-- name -->  
 **Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
-**Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl** <!-- names -->
+**Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl, Michaja Hummel** <!-- names -->
 
 ---
 
@@ -28,18 +28,16 @@ The review is based on the review template from the lecture
 
 | Phase | Description |
 |-------|-------------|
-| **Planning** | The moderator checks whether the **entry criteria** are met (e.g. the review object is in a reviewable state). The review is planned: reviewers and dates are fixed, invitations are sent, etc. The moderator completes the **Master Plan (MP)** and identifies suitable inspection tasks. |
-| **Kick-off (optional)** | In the optional kick-off meeting, the author gives reviewers background on the review object and the project context so reviewers can target defects efficiently. The moderator presents and updates the **Master Plan (MP)**. |
-| **Individual preparation** | Each reviewer examines the review object for defects and other issues. Findings and their quality are reported to the moderator. The moderator consolidates findings into one document, prepares the review meeting, and derives key figures for the **Data Summary (DS)**. |
-| **Review meeting** | Reviewers decide the status of each finding. Additional findings may be collected during the meeting. The group may decide whether a **re-inspection** is necessary. If useful, an optional follow-up session (“third hour”) discusses remaining issues and lessons learned. The **Level of Findings (LoF)** is updated; comments are added; status and responsibility are assigned. |
-| **Reworking** | The author updates the review object according to findings and comments and refreshes reference documentation as needed. The author updates **LoF** status and records rework effort in the **Data Summary (DS)**. |
-
+| **Planning** |  The review is planned: reviewers and dates are fixed. Part of the Group completes the Master Plan (MP) and identifies suitable inspection tasks. |
+| **Kick-off**  | In the kick-off meeting, the master Plan is discussed with the whole group and changes are discussed and added to the Master Plan |
+| **Individual preparation** | Each reviewer examines their  review objects. |
+| **Review meeting** | Reviewers decide the status of each finding. Additional findings may be collected during the meeting. 
 
 ---
 
 ## 2. Master Plan (MP)
 
-### 2.1 Masterplan — header
+### 2.1 Masterplan - header
 
 
 | Field | Value |
@@ -47,8 +45,8 @@ The review is based on the review template from the lecture
 | Review No. |REV-2026-001
 | Project |esbot <!-- Project or product name (e.g. ESBot). --> |
 | Project manager |Mooh9876 <!-- Name of project / product owner or PM. --> |
-| Quality expert / manager | Yunis Ghazali<!-- Name of quality role if applicable;  else “—”. --> |
-| Moderator | <!-- Review moderator: owns process, schedule, consolidation. --> |
+| Quality expert / manager | -<!-- Name of quality role if applicable;  else “—”. --> |
+| Moderator | -<!-- Review moderator: owns process, schedule, consolidation. --> |
 | Author(s) |  Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz <!-- Author(s) of the review object(s); main contact for rework. --> |
 
 
@@ -113,7 +111,7 @@ The review is based on the review template from the lecture
 
 | Individual preparation | Value | Unit |
 |------------------------|-------|------|
-| Submission of findings by | <!-- Enter the deadline by which each reviewer submits findings to the moderator (date/time or rule such as “72h after kick-off”). --> | — |
+| Submission of findings by | <!-- Enter the deadline by which each reviewer submits findings to the moderator (date/time or rule such as “72h after kick-off”). --> | 05.05.2026 |
 | Size of review objects | <!-- Enter the total Non-Comment Lines of Code (NLOC) for code; for specification-only reviews, use pages or words and note the unit here. --> | NLOC |
 | Optimal inspection rate | <!-- Target or measured inspection speed (e.g. NLOC per hour per reviewer). --> | NLOC/h |
 | Optimal inspection time | <!-- Planned total inspection time in hours (placeholder 0.00 until estimated or measured). --> | h |
@@ -122,7 +120,7 @@ The review is based on the review template from the lecture
 
 | Date / time / location |
 |------------------------|
-| <!-- e.g. 2026-04-25 10:00 CET, Room Y / video link --> |
+| 05.05.2026 on Discord<!-- e.g. 2026-04-25 10:00 CET, Room Y / video link --> |
 
 ### 2.9 Additional milestones (optional)
 
@@ -130,7 +128,7 @@ The review is based on the review template from the lecture
 
 | Milestone | Planned date / time | Actual date / time |
 |-----------|---------------------|---------------------|
-| End of individual preparation |04.05.2026 <!-- same as or before “Submission of findings by” --> | |
+| End of individual preparation | 04.05.2026 <!-- same as or before “Submission of findings by” --> | |
 
 ---
 
