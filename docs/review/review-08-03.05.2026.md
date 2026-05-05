@@ -4,7 +4,7 @@
 **Review object(s): esbot documentation, requirements, tests and partial implementation**  
 **Review type: Peer Review**  
 **Date (planned / actual):27.04.2026/05.05.2026**  
-**Moderator:** <!-- name -->  
+**Moderator: - ** <!-- name -->  
 **Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
 **Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl, Michaja Hummel** <!-- names -->
 
@@ -31,7 +31,8 @@ The review is based on the review template from the lecture
 | **Planning** |  The review is planned: reviewers and dates are fixed. Part of the Group completes the Master Plan (MP) and identifies suitable inspection tasks. |
 | **Kick-off**  | In the kick-off meeting, the master Plan is discussed with the whole group and changes are discussed and added to the Master Plan |
 | **Individual preparation** | Each reviewer examines their  review objects. |
-| **Review meeting** | Reviewers decide the status of each finding. Additional findings may be collected during the meeting. 
+| **Review meeting** | Reviewers decide the status of each finding. Additional findings may be collected during the meeting. |
+| **Reworking** | Rework is done by the Authors, the reviewers only provide a List of Findings      
 
 ---
 
@@ -44,7 +45,7 @@ The review is based on the review template from the lecture
 |-------|-------|
 | Review No. |REV-2026-001
 | Project |esbot <!-- Project or product name (e.g. ESBot). --> |
-| Project manager |Mooh9876 <!-- Name of project / product owner or PM. --> |
+| Project manager | Mooh9876 <!-- Name of project / product owner or PM. --> |
 | Quality expert / manager | -<!-- Name of quality role if applicable;  else “—”. --> |
 | Moderator | -<!-- Review moderator: owns process, schedule, consolidation. --> |
 | Author(s) |  Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz <!-- Author(s) of the review object(s); main contact for rework. --> |
