@@ -1,15 +1,8 @@
-Low effort, easy to implement
-No meeting/scheduling needed
-
-# Before the session the Prep Phase was held on XXXXXXX!!!
-
-
-
 # Review template (inspection / technical review)
 
-**Project / product:ESBot** 
-**Review object(s): esbot.md** 
-**Review type: Peer Review**   
+**Project / product: ESBot: https://github.com/Mooh9876/esbot**  
+**Review object(s): esbot documentation, requirements, tests and partial implementation**  
+**Review type: Peer Review**  
 **Date (planned / actual):27.04.2026/05.05.2026**  
 **Moderator:** <!-- name -->  
 **Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
@@ -19,7 +12,8 @@ No meeting/scheduling needed
 
 ## 1. General instructions
 
-Use this template together with the review process you selected from the presented ones in the course. The phases below describe a typical inspection-style workflow (adapt terminology to your chosen review type if needed).
+The method peer review was chosen to enable a review without a meeting and asynchronous working. Furthermore its Ease-of-Use fit the low complexity of the review object
+The review is based on the review template from the lecture
 
 **Terminology**
 
