@@ -65,6 +65,24 @@ After starting the server, verify PostgreSQL tables were created correctly via (
 docker exec -it esbot-db psql -U esbot_user -d esbot -c "\dt"
 ```
 
+## Static Analysis
+
+**Lint (Pylint):**
+```bash
+make lint
+```
+```bash
+pylint backend/
+```
+
+**Security scan (Bandit):**
+```bash
+make security
+```
+```bash
+bandit -r backend/ -x backend/tests
+```
+
 ## Project Structure
 
 ```
