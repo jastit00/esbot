@@ -4,7 +4,7 @@
 **Review object(s): esbot documentation, requirements, tests and partial implementation**  
 **Review type: Peer Review**  
 **Date (planned / actual):27.04.2026/05.05.2026**  
-**Moderator: - ** <!-- name -->  
+
 **Author(s): Mohammed Al-Otaibi,Nils-Konstantin Lutz,Alen Osmanagic,Dominic Sehorz** <!-- name(s) -->  
 **Reviewers: Jakob Strauss, Yunis Ghazali, Vincent Kehl, Michaja Hummel** <!-- names -->
 
