@@ -1,4 +1,3 @@
-verbessern: bessere scenarios
 
 # Retrospective on the Review
 
@@ -22,3 +21,4 @@ verbessern: bessere scenarios
 
 ## 3. Improvement for Future Reviews
 - For future review rounds we would use better scenarios / checklists that fit better to the reviewed project and its current state.
+- Also a short exchange with the authors through a meeting or at least chat would be helpful to get introduction to the project and documents. Also the feedback would be more comprehensive through explanation.
