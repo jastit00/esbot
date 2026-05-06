@@ -131,7 +131,7 @@ The review is based on the review template from the lecture
 
 | Milestone | Planned date / time | Actual date / time |
 |-----------|---------------------|---------------------|
-| End of individual preparation | 04.05.2026 <!-- same as or before “Submission of findings by” --> | |
+| End of individual preparation | 04.05.2026 <!-- same as or before “Submission of findings by” --> | 05.05.2026 |
 
 ---
 
