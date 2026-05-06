@@ -56,19 +56,22 @@ The review is based on the review template from the lecture
 
 | # | Review objects | Abbr. |
 |---|----------------|-------|
-| 1 | `docs/spec/requirements.md` | requirements.md |
-| 2 | `docs/spec/spec.md` | spec.md |
-| 3 | `backend/app/models/`, `backend/tests/`, `backend/features/*.feature` | models, tests, feature |
+| 1 | `docs/spec/requirements.md` | requirements |
+| 2 | `docs/spec/spec.md` | spec |
+| 3 | `backend/app/models/`| models |
+| 4 | `backend/tests/` | tests |
+| 5 | `backend/features/*.feature` | feature |
+
 ### 2.3 Reference documents
 
 <!-- List materials reviewers need for context (requirements baseline, architecture, API spec, course brief). Use Abbr. for cross-references. -->
 
 | # | Reference documents | Abbr. |
 |---|---------------------|-------|
-| 1 | `docs/esbot.md` | esbot.md |
-| 2 | `docs/spec/requirements.md` | requirements.md |
-| 3 | `docs/spec/spec.md` | spec.md |
-| 4 | `backend/app/database.py`, `backend/tests/conftest.py`, `backend/features/environment.py` | database, conftest, environment |<!-- optional third reference --> | <!--  --> |
+| 1 | `docs/esbot.md` | esbot |
+| 2 | `docs/spec/requirements.md` | requirements |
+| 3 | `docs/spec/data-model.md` | datamodel |
+
 
 ### 2.4 Checklists / scenarios
 
@@ -77,9 +80,9 @@ The review is based on the review template from the lecture
 | # | Checklists / scenarios |
 |---|------------------------|
 | 1 | **Requirements completeness :** Are all requirements uniquely numbered, testable, measurable, and consistent? |
-| 2 | **BDD traceability :** Are all BDD scenarios traceable to requirements (e.g. via tag or comment)? Do scenarios follow the Given/When/Then format? |
+| 2 | **BDD traceability :** Are all BDD scenarios traceable to requirements? Do scenarios follow the Given/When/Then format? |
 | 3 | **Consistency :** Does the domain model match the specified requirements? Are all implemented features described in the spec? |
-| 4 | **Code traceability :** Can unit tests and implementation be traced back to specific requirement IDs? |
+| 4 | **Code traceability :** Can unit tests and implementation be traced back to specific requirements? |
 
 
 
@@ -111,10 +114,10 @@ The review is based on the review template from the lecture
 
 | Individual preparation | Value | Unit |
 |------------------------|-------|------|
-| Submission of findings by | <!-- Enter the deadline by which each reviewer submits findings to the moderator (date/time or rule such as “72h after kick-off”). --> | 05.05.2026 |
-| Size of review objects | <!-- Enter the total Non-Comment Lines of Code (NLOC) for code; for specification-only reviews, use pages or words and note the unit here. --> | NLOC |
-| Optimal inspection rate | <!-- Target or measured inspection speed (e.g. NLOC per hour per reviewer). --> | NLOC/h |
-| Optimal inspection time | <!-- Planned total inspection time in hours (placeholder 0.00 until estimated or measured). --> | h |
+| Submission of findings by | 05.05.2026<!-- Enter the deadline by which each reviewer submits findings to the moderator (date/time or rule such as “72h after kick-off”). --> |  |
+| Size of review objects | Not measured<!-- Enter the total Non-Comment Lines of Code (NLOC) for code; for specification-only reviews, use pages or words and note the unit here. --> | NLOC |
+| Optimal inspection rate | Not measured<!-- Target or measured inspection speed (e.g. NLOC per hour per reviewer). --> | NLOC/h |
+| Optimal inspection time | ~4 for the whole team<!-- Planned total inspection time in hours (placeholder 0.00 until estimated or measured). --> | h |
 
 ### 2.8 Review meeting
 
@@ -147,6 +150,9 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 | F-005 | `requirements.md`  | NFR4 "Multiple concurrent users" is not measurable. No minimum number of users specified.                     | defect     | major    | open   | —     | Define a concrete load target, e.g. ≥ 50 concurrent users |
 | F-006 |`requirements.md`   | NFR5 "Stored securely" is not testable. No encryption standard, access control policy, or compliance requirement is mentioned. | defect     | minor    | open   | —     | Specify security mechanism |
 | F-007 | `requirements.md`  | NFR1 response time of 2 seconds does not specify conditions, e.g. under what load or for what request type. | defect     | minor    | open   | —     | Add conditions, e.g. "under normal load of 50 users, 95th percentile" |
+| F-008 | `backend/tests/*` | FR1 (Ask Questions), FR2 (Provide Answers), FR7 (Chat Interface), and FR8 (AI Integration) have no corresponding unit tests. Requirements exist but have no test coverage. | defect  | major   | open   | —     | Add tests that exercise the question-answering and chat flows, or document why they are excluded from unit testing |
+| F-009 | `test_user_session.py`, `test_quiz_request.py` | FR5 (Retrieve Sessions) is not covered by any test. Sessions can be stored (FR4) but there is no test verifying that a previous session can be retrieved by a user. | defect  | minor    | open   | —     | Add a test for session retrieval to establish traceability to FR5                           |
+| F-010 | `backend/features/*`        | All scenarios require a registered and logged-in student as a precondition, but no requirement in requirements.md defines user registration or authentication.  | question | minor    | open   | —     | Clarify whether authentication is an implicit requirement; if so, add it to requirements.md                     |
 
 
 ---
@@ -157,12 +163,12 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Size of review object | <!-- e.g. pages, LOC, #requirements --> | <!-- --> |
-| Preparation effort (hours, optional) | <!-- per role --> | <!-- --> |
-| Number of findings (initial) | <!-- --> | <!-- --> |
-| Number of findings after meeting | <!-- --> | <!-- --> |
-| Rework effort (hours, author) | <!-- --> | <!-- --> |
-| Re-inspection required? | <!-- yes / no --> | <!-- --> |
+| Size of review object | 7 testfiles, 3 BDD feature files, 6 Data model files,  10+ documentation/specification files<!-- e.g. pages, LOC, #requirements --> | <!-- --> |
+| Preparation effort (hours, optional) | ~4h <!-- per role --> | teamwide preparation effort<!-- --> |
+| Number of findings (initial) | 10 | <!-- --> |
+| Number of findings after meeting | 10 | <!-- --> |
+| Rework effort (hours, author) | ~30min<!-- --> | minor additions to test template<!-- --> |
+| Re-inspection required? | no<!-- yes / no --> | LoF can be passed to authors<!-- --> |
 
 ---
 
@@ -198,3 +204,4 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 | Moderator | <!-- --> | <!-- --> |
 | Author | <!-- --> | <!-- --> |
 
+*Claude Sonnet 4.6 was used in formulating Findings and Scenarios, and for Formatting* 
