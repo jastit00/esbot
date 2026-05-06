@@ -177,31 +177,46 @@ Suggested values: **Type** — defect, question, suggestion; **Severity** — bl
 ### 5.1 Summary
 
 <!-- Short executive summary: object reviewed, outcome, overall quality impression. -->
+The peer review of the ESBot project covered five review objects: requirements, specification, domain models, unit tests, and BDD feature files. Ten findings were identified across four scenarios. The majority of findings concern missing or unmeasurable requirements and gaps in test and BDD coverage. The review objects are in an early state; implementation is only partially present, which limits the depth of traceability analysis.
 
 ### 5.2 Review outcome
 
 - **Review object state after review:** <!-- e.g. accepted with changes, requires re-inspection, not accepted -->
+- Conditionally accepted — the review objects contain meaningful content and a reasonable structure, but several major defects must be addressed before the artefacts can be considered complete.
+
 - **Major risks or themes:** <!-- bullet list -->
 
 ### 5.3 Decisions and follow-up
 
 | Topic | Decision | Responsible | Due date |
-|-------|----------|-------------|----------|
-| <!-- --> | <!-- --> | <!-- --> | <!-- --> |
+| --- | --- | --- | --- |
+| FR5 implementation unclear – UserSession has no user identifier | Deferred | Authors | TBD |
+| `Message.role` not defined in requirements or spec | Accepted | Authors | TBD |
+| Unmeasurable requirements (FR2, NFR1, NFR2, NFR4, NFR5) | Accepted – revise requirements.md | Authors | TBD |
+| Missing unit tests for FR1, FR2, FR7, FR8 | Accepted | Authors | TBD |
+| Missing unit test for FR5 session retrieval | Accepted | Authors | TBD |
+| User authentication not defined as a requirement | Deferred | Authors | TBD |
 
 ### 5.4 Positive observations (optional)
 
-<!-- What was done well; good practices worth keeping. -->
+- The unit test files are well-structured, clearly organised into Creation, Validation, Relationship, and Helper test classes.
+- The BDD feature files follow Given/When/Then format correctly throughout and include both happy-path and error-path scenarios.
+- The `conftest.py` setup with an in-memory SQLite database is a clean and practical approach to test isolation.
+- The domain model is consistent and well-implemented at the model layer.
 
 ### 5.5 Lessons learned (optional)
 
 <!-- Process improvements for the next review. -->
+- Peer review worked well as a first formal review format for the team, given its low overhead and asynchronous nature.
+- Selecting scenarios that match the actual state of the project is important — reviewing incomplete implementation limits the findings that can be raised for code traceability.
+- A short kick-off exchange with the authors would help reviewers understand design decisions and reduce the number of questions that cannot be resolved without context.
 
+  
 ### 5.6 Sign-off
 
 | Role | Name | Signature / date |
 |------|------|------------------|
-| Moderator | <!-- --> | <!-- --> |
-| Author | <!-- --> | <!-- --> |
+| Team | Jakob Strauss, Yunis Ghazali, Vincent Kehl, Michaja Hummel | 05.05.2026 |
+| Author | Mohammed Al-Otaibi, Nils-Konstantin Lutz, Alen Osmanagic, Dominic Sehorz | Not Signed |
 
-*Claude Sonnet 4.6 was used in formulating Findings and Scenarios, and for Formatting* 
+*Claude Sonnet 4.6 was used in formulating Findings and Scenarios and the Review Report, and for Formatting* 
