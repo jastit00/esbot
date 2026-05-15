@@ -132,7 +132,7 @@ identify all **valid** and **invalid equivalence classes**.
 2. No boundary, type-level class.
 3. Requirements: NFR-7
 
-### Step 3 — Decision Table for Answer Evaluation
+### Step 3 - Decision Table for Answer Evaluation
 
 The answer evaluation feature (FR-004) combines three independent conditions to
 determine the type of feedback returned to the student:
