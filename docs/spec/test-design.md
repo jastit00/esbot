@@ -1,4 +1,6 @@
-#### Step 1 - Identify Valid and Invalid Equivalence Classes
+#7.1
+
+### Step 1 - Identify Valid and Invalid Equivalence Classes
 
 
 The relevant validation rules for a QuizRequest are:
@@ -42,94 +44,112 @@ identify all **valid** and **invalid equivalence classes**.
 | `difficulty`| EC-D-5   | Invalid    | Empty string | `""` |
 | `difficulty`| EC-D-6   | Invalid    | Null / missing value | `null` |
 
-#### Step 2 - Justify Each Class
+### Step 2 - Justify Each Class
 
 ##### Parameter: `topic`
 
 **EC-T-1: `"Java"`**
 1. 4 characters, mid-range in [3,100], so it stands for any valid length without sitting on a boundary.
 2. Contains both boundaries. Lower: **3** (`"abc"`), upper: **100** (`"A"` x 100); just outside: **2** (`"ab"`) and **101** (`"A"` x 101).
-3. Requirements:
+3. Requirements: FR-3, NFR-7
 
 **EC-T-2: `"Go"`**
 1. Length 2 violates the minimum of 3, representing all strings too short to pass.
 2. Boundary-touching. Upper end of class: length **2**; just outside (back into valid): length **3**.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-T-3: `"A"` x 101**
 1. Length 101 exceeds the maximum of 100, representing all over-long strings.
 2. Boundary-touching. Lower end of class: length **101**; just outside (back into valid): length **100**.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-T-4: `""`**
 1. Empty string is a separate edge case typically caught by a distinct blank-check rule.
 2. Degenerate boundary at length **0**; no further bounds.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-T-5: `null`**
 1. Missing value, semantically different from empty string and explicitly invalid per spec.
 2. No numeric boundary, type-level class.
-3. Requirements:
+3. Requirements: NFR-7
 
 ##### Parameter: `count`
 
 **EC-C-1: `5`**
 1. Mid-range in [1,10], so it stands for any valid integer without sitting on a boundary.
 2. Contains both boundaries. Lower: **1**, upper: **10**; just outside: **0** and **11**.
-3. Requirements:
+3. Requirements: FR-3, NFR-7
 
 **EC-C-2: `0`**
 1. Below the lower bound, representing all values <= 0.
 2. Boundary-touching. Upper end of class: **0**; just outside (back into valid): **1**.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-C-3: `11`**
 1. Above the upper bound, representing all values > 10.
 2. Boundary-touching. Lower end of class: **11**; just outside (back into valid): **10**.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-C-4: `"abc"`**
 1. Wrong type, violating the integer requirement, a distinct error category from range violations.
 2. No numeric boundary, type-level class.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-C-5: `null`**
 1. Missing value, rejected independently of type or range.
 2. No numeric boundary, type-level class.
-3. Requirements:
+3. Requirements: NFR-7 
 
 ##### Parameter: `difficulty`
 
 **EC-D-1: `"easy"`**
 1. Explicitly accepted enum value and the only member of its class.
 2. No boundary analysis applicable, discrete enum point.
-3. Requirements:
+3. Requirements: FR-3, NFR-7
 
 **EC-D-2: `"medium"`**
 1. Explicitly accepted enum value, sole member of its class.
 2. No boundary, discrete enum point.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-D-3: `"hard"`**
 1. Explicitly accepted enum value, sole member of its class.
 2. No boundary, discrete enum point.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-D-4: `"Easy"`**
 1. Wrong casing represents all non-accepted strings (typos, case mismatches), since the spec rejects anything outside the enum.
 2. No boundary, set has no ordering.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-D-5: `""`**
 1. Empty string is listed as explicitly invalid by the spec.
 2. Degenerate boundary at length **0**.
-3. Requirements:
+3. Requirements: NFR-7
 
 **EC-D-6: `null`**
 1. Missing value is listed as explicitly invalid by the spec.
 2. No boundary, type-level class.
-3. Requirements:
-  
+3. Requirements: NFR-7
+
+### Step 3 — Decision Table for Answer Evaluation
+
+The answer evaluation feature (FR-004) combines three independent conditions to
+determine the type of feedback returned to the student:
+
+| Condition | Values |
+|-----------|--------|
+| **Answer correctness** | Correct / Partially correct / Incorrect |
+| **Answer is empty or blank** | Yes / No |
+| **Quiz item still exists in session** | Yes / No |
+
+| | R1 | R2 | R3 | R4 | R5 |
+|---|---|---|---|---|---|
+| **Answer is empty/blank** | Yes | No | No | No | No |
+| **Quiz item exists in session** | – | No | Yes | Yes | Yes |
+| **Answer correctness** | – | – | Correct | Partially correct | Incorrect |
+| **Action / Feedback** | Reject: "Answer cannot be empty" | Reject: "Quiz item not found / session expired" | Positive feedback: answer is correct | Partial feedback: indicate what was right/wrong | Negative feedback: answer is wrong |
+| **Requirement / Edge case** | NFR-7  FR-004 | NFR-004 , FR-005 | FR-004 | FR-004 | FR-004 |
 ## 7.2
 
 ### Step 1 
