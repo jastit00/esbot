@@ -1,4 +1,4 @@
-#7.1
+## 7.1
 
 ### Step 1 - Identify Valid and Invalid Equivalence Classes
 
@@ -148,8 +148,9 @@ determine the type of feedback returned to the student:
 | **Answer is empty/blank** | Yes | No | No | No | No |
 | **Quiz item exists in session** | – | No | Yes | Yes | Yes |
 | **Answer correctness** | – | – | Correct | Partially correct | Incorrect |
-| **Action / Feedback** | Reject: "Answer cannot be empty" | Reject: "Quiz item not found / session expired" | Positive feedback: answer is correct | Partial feedback: indicate what was right/wrong | Negative feedback: answer is wrong |
-| **Requirement / Edge case** | NFR-7  FR-004 | NFR-004 , FR-005 | FR-004 | FR-004 | FR-004 |
+| **Action / Feedback** | Reject: "Answer cannot be empty" | Reject: "Quiz item not found" | Positive feedback: answer is correct | Partial feedback: indicate what was right/wrong | Negative feedback: answer is wrong |
+| **Requirement / Edge case** | NFR-7, FR-004 | NFR-004 , FR-005 | FR-004 | FR-004 | FR-004 |
+
 ## 7.2
 
 ### Step 1 
