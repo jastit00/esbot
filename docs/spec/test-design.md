@@ -90,3 +90,26 @@ Start: `EXPIRED`
 | 3 | `submit_answer` | `EXPIRED` | Rejected; error: session expired | NFR-004 |
 
 ---
+
+## 7.3 Reflection - Test Design Technique Comparison
+
+### 1. Complementarity
+
+**Equivalence Class Partitioning / Boundary Value Analysis**: This technique is useful in all scenarios where values can be grouped into classes, especially those with numeric values. Example: Requested question `count` which for example has to be between 1 and 10.
+
+**Decision Tables**: This technique is useful for complex policy rules and combinations based on multiple conditions. Example: `Answer Evaluation` that combines three independent conditions.
+
+**State Transition Testing**: This technique is useful for applications with stateful behavior or workflows. Example: `UserSession` that has four possible states and many possible workflows between them.
+
+
+### 2. Gaps
+The external AI inference is not testable with these techniques, because the AI outputs are not deterministic. The correctness, quality and hallucination rate of the AI responses cannot be tested with these techniques.
+
+An alternative testing technique could be Exploratory Testing, where testers actively explore the system based on their experience and intuition and verify if the AI model perfomrs the task correctly and delivers expected results.
+
+
+### 3. Effort vs. value
+... produced the hightest defect-detection value relative to the design effort. ...
+
+
+Equivalence Class Partitioning and Boundary Value Analysis are very helpful and worth the effort if the number of classes is limited.
