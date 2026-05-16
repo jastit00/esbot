@@ -262,7 +262,4 @@ An alternative testing technique could be Exploratory Testing, where testers act
 
 
 ### 3. Effort vs. value
-... produced the hightest defect-detection value relative to the design effort. ...
-
-
-Equivalence Class Partitioning and Boundary Value Analysis are very helpful and worth the effort if the number of classes is limited.
+For ESBot specifically Equivalence Class Partitioning / Boundary Value Analysis produced the hightest defect-detection value relative to the design effort, because invalid input like too big numbers or null values can cause crashes or unwanted behavior. According to FR-002 AI-generated answers shall be structured and controlled which can be better achieved by using these techniques.
