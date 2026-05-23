@@ -1,6 +1,3 @@
-"""
-ai wurde für syntax verwendet
-"""
 
 from typing import List, Optional
 from datetime import datetime, timezone
