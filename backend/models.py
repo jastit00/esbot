@@ -10,9 +10,12 @@ class Session(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), nullable=False)
     session_token: str = Field(index=True, unique=True, nullable=False)
+    user_id: Optional[str] = Field(default=None, index=True)
+    title: Optional[str] = Field(default=None)
+    last_activity: Optional[datetime] = Field(default=None)
 
-    messages: List["Message"] = Relationship(back_populates="session")
-    quiz_requests: List["QuizRequest"] = Relationship(back_populates="session")
+    messages: List["Message"] = Relationship(back_populates="session", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
+    quiz_requests: List["QuizRequest"] = Relationship(back_populates="session", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     quiz_items: List["QuizItem"] = Relationship(back_populates="session")
     submitted_answers: List["SubmittedAnswer"] = Relationship(back_populates="session")
 
@@ -37,7 +40,7 @@ class QuizRequest(SQLModel, table=True):
 
     session_id: int = Field(foreign_key="sessions.id", nullable=False)
     session: Session = Relationship(back_populates="quiz_requests")
-    quiz_items: List["QuizItem"] = Relationship(back_populates="quiz_request")
+    quiz_items: List["QuizItem"] = Relationship(back_populates="quiz_request", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
 
 class QuizItem(SQLModel, table=True):
@@ -52,7 +55,7 @@ class QuizItem(SQLModel, table=True):
 
     session: Session = Relationship(back_populates="quiz_items")
     quiz_request: QuizRequest = Relationship(back_populates="quiz_items")
-    submitted_answers: List["SubmittedAnswer"] = Relationship(back_populates="quiz_item")
+    submitted_answers: List["SubmittedAnswer"] = Relationship(back_populates="quiz_item", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
 
 class SubmittedAnswer(SQLModel, table=True):
@@ -69,7 +72,7 @@ class SubmittedAnswer(SQLModel, table=True):
     quiz_item: QuizItem = Relationship(back_populates="submitted_answers")
     evaluation_result: Optional["EvaluationResult"] = Relationship(
         back_populates="submitted_answer",
-        sa_relationship_kwargs={"uselist": False}
+        sa_relationship_kwargs={"uselist": False, "cascade": "all, delete-orphan"}
     )
 
 
