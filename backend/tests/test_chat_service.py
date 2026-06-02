@@ -194,3 +194,10 @@ def test_evaluate_answer_returns_fallback_on_llm_failure(chat_service, mock_ai):
     )
 
     assert feedback == FALLBACK_EVALUATION
+
+
+"""""
+Tool Used: Claude Code with Sonnet 4.6
+Purpose: Generate Tests for ChatService
+
+"""""
