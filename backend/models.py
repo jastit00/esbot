@@ -16,8 +16,6 @@ class Session(SQLModel, table=True):
 
     messages: List["Message"] = Relationship(back_populates="session", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
     quiz_requests: List["QuizRequest"] = Relationship(back_populates="session", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
-    quiz_items: List["QuizItem"] = Relationship(back_populates="session")
-    submitted_answers: List["SubmittedAnswer"] = Relationship(back_populates="session")
 
 
 class Message(SQLModel, table=True):
@@ -50,10 +48,8 @@ class QuizItem(SQLModel, table=True):
     text: str = Field(min_length=1, nullable=False)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), nullable=False)
 
-    session_id: int = Field(foreign_key="sessions.id", nullable=False)
     quiz_request_id: int = Field(foreign_key="quiz_requests.id", nullable=False)
 
-    session: Session = Relationship(back_populates="quiz_items")
     quiz_request: QuizRequest = Relationship(back_populates="quiz_items")
     submitted_answers: List["SubmittedAnswer"] = Relationship(back_populates="quiz_item", sa_relationship_kwargs={"cascade": "all, delete-orphan"})
 
@@ -65,10 +61,8 @@ class SubmittedAnswer(SQLModel, table=True):
     text: str = Field(min_length=1, nullable=False)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), nullable=False)
 
-    session_id: int = Field(foreign_key="sessions.id", nullable=False)
     quiz_item_id: int = Field(foreign_key="quiz_items.id", nullable=False)
 
-    session: Session = Relationship(back_populates="submitted_answers")
     quiz_item: QuizItem = Relationship(back_populates="submitted_answers")
     evaluation_result: Optional["EvaluationResult"] = Relationship(
         back_populates="submitted_answer",
