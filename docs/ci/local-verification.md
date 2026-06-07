@@ -79,3 +79,15 @@ python -m pylint backend/ --exit-zero
 
 These two commands together form the local verification gate that the CI
 workflow will replicate in Phase B.
+
+---
+
+<!--
+Tool Used: Claude Opus 4.7
+Purpose: Wurde ausschliesslich zur Formulierungs- und Struktur-Unterstuetzung
+         (z. B. korrekte Markdown-Tabellen, einheitliche Formatierung der
+         Befehls-Snippets) eingesetzt.
+         Die KI diente lediglich als unterstuetzendes Hilfsmittel und nicht als
+         primaere Quelle der Loesung.
+-->
+
