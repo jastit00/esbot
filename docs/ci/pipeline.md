@@ -81,7 +81,7 @@ When CI fails locally but passes on GitHub (or vice versa):
 - `--nvdApiKey` — uses an authenticated NVD key (stored in `secrets.NVD_API_KEY`) to avoid rate limiting
 
 
-**Value vs. cost:** Catches CVEs before merge with ~3–5 min runtime and no maintenance overhead. False positives (CVE exists but code path unused) can be suppressed via `suppressions.xml`.
+**Value vs. cost:** Catches CVEs before merge with minimal runtime and no maintenance overhead. False positives (CVE exists but code path unused) can be suppressed via `suppressions.xml`.
 
 **Local parity:**
 
