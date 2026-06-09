@@ -1,0 +1,27 @@
+name: ESBot CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+    python:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Set up Python
+              uses: actions/setup-python@v6
+              with:
+                python-version: '3.12'
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+                pip install pylint
+            - name: Run Unit tests
+              run: |
+                DATABASE_URL="sqlite:///./test.db" python -m pytest
+            - name: Run static analysis
+              run: |
+                python -m pylint backend/ --exit-zero
