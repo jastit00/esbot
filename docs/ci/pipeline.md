@@ -45,12 +45,12 @@ The 6th version (`actions/setup-python@v6`) is the newest and also compatible ve
     DATABASE_URL="sqlite:///./test.db" python -m pytest
 - name: Run static analysis
   run: |
-    python -m pylint backend/ --exit-zero
+    python -m pylint backend/
 ```
 
 First the dependencies are installed with `pip install -r requirements.txt` (also `pylint` is installed). 
 Then the unit tests are run with `DATABASE_URL="sqlite:///./test.db" python -m pytest` with a SQL in-memory database.
-Finally the static analysis is run with `python -m pylint backend/ --exit-zero`.
+Finally the static analysis is run with `python -m pylint backend/`.
 
 Intentionally out of CI is the live LLM, because it doesn't make sense to use such dependency in a CI workflow. Also the production DB is not used in CI to seperate concerns.
 

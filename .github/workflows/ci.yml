@@ -24,4 +24,4 @@ jobs:
                 DATABASE_URL="sqlite:///./test.db" python -m pytest
             - name: Run static analysis
               run: |
-                python -m pylint backend/ --exit-zero
+                python -m pylint backend/
