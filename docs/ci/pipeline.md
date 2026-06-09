@@ -63,3 +63,29 @@ When CI fails locally but passes on GitHub (or vice versa):
 - the python version should be the same
 - the environment should be the same or not needed for the run
 - the same codebase should be used
+
+
+---
+
+## Exercise 9.2 enhancements
+
+### OWASP Dependency Check
+
+**Tool:** [`dependency-check/Dependency-Check_Action@main`](https://github.com/dependency-check/Dependency-Check_Action) — scans `requirements.txt` against the NVD and uploads an HTML report as a workflow artifact.
+
+**Why it fits ESBot:** ESBot depends on several third-party packages that could ship a CVE. The check runs in parallel with the existing `python` job, so it adds no latency to the pipeline.
+
+**Key arguments:**
+- `--failOnCVSS 7` — blocks the merge on any High/Critical CVE
+- `--enableRetired` — also flags unmaintained packages
+- `--nvdApiKey` — uses an authenticated NVD key (stored in `secrets.NVD_API_KEY`) to avoid rate limiting
+
+
+**Value vs. cost:** Catches CVEs before merge with ~3–5 min runtime and no maintenance overhead. False positives (CVE exists but code path unused) can be suppressed via `suppressions.xml`.
+
+**Local parity:**
+```bash
+pip install pip-audit
+pip-audit -r requirements.txt
+```
+`pip-audit` can be used as a fast local alternative; run it before pushing.
