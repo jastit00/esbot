@@ -86,6 +86,7 @@ When CI fails locally but passes on GitHub (or vice versa):
 **Local parity:**
 
 Download OWASP Dependency Check for CLI
+```bash
 VERSION=$(curl -s https://dependency-check.github.io/DependencyCheck/current.txt)
 curl -Ls "https://github.com/dependency-check/DependencyCheck/releases/download/v$VERSION/dependency-check-$VERSION-release.zip" -o dependency-check.zip
 unzip dependency-check.zip
@@ -98,3 +99,6 @@ unzip dependency-check.zip
   --enableExperimental \
   --failOnCVSS 7 \
   --nvdApiKey "$NVD_API_KEY"
+```
+
+
