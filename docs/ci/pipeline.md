@@ -84,8 +84,17 @@ When CI fails locally but passes on GitHub (or vice versa):
 **Value vs. cost:** Catches CVEs before merge with ~3–5 min runtime and no maintenance overhead. False positives (CVE exists but code path unused) can be suppressed via `suppressions.xml`.
 
 **Local parity:**
-```bash
-pip install pip-audit
-pip-audit -r requirements.txt
-```
-`pip-audit` can be used as a fast local alternative; run it before pushing.
+
+Download OWASP Dependency Check for CLI
+VERSION=$(curl -s https://dependency-check.github.io/DependencyCheck/current.txt)
+curl -Ls "https://github.com/dependency-check/DependencyCheck/releases/download/v$VERSION/dependency-check-$VERSION-release.zip" -o dependency-check.zip
+unzip dependency-check.zip
+
+./dependency-check/bin/dependency-check.sh \
+  --project "ESBot" \
+  --scan "." \
+  --format "HTML" \
+  --out "reports" \
+  --enableExperimental \
+  --failOnCVSS 7 \
+  --nvdApiKey "$NVD_API_KEY"
