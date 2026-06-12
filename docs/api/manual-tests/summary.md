@@ -29,18 +29,19 @@ All tests returned the expected error code, the messages api is not useful becau
 
 ---
 
-## GET /api/v1/sessions/{session_id}/messages 
-
-![get messages error](./get_messages_error.png)
-
----
-
 ## DELETE /api/v1/sessions/{session_id}
 
 ![delete session](./delete_session.png)
 
 ---
 
-
+## DELETE /api/v1/sessions/{session_id} for non-existing session
 
 ![delete session error](./delete_session_error.png)
+
+---
+## GET /api/v1/sessions/{session_id}/messages for non-existing session
+
+![get messages error](./get_messages_error.png)
+
+---
