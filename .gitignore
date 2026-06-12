@@ -33,6 +33,13 @@ Temporary Items
 
 
 ########################
+# Local databases
+########################
+*.db
+*.sqlite
+*.sqlite3
+
+########################
 # Windows
 ########################
 # Windows image file caches
