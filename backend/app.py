@@ -12,7 +12,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(sessions_router)
+app.include_router(sessions_router, prefix="/api/v1")
 register_exception_handlers(app)
 
 

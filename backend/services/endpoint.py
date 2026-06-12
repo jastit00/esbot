@@ -2,10 +2,10 @@
 REST API endpoints for ESBot.
 
 Endpoints (4):
-- POST   /sessions                       - create a new learning session
-- GET    /sessions                       - list all sessions
-- GET    /sessions/{session_id}/messages - retrieve message history of a session
-- DELETE /sessions/{session_id}          - delete a session and its associated data
+- POST   /api/v1/sessions                       - create a new learning session
+- GET    /api/v1/sessions                       - list all sessions
+- GET    /api/v1/sessions/{session_id}/messages - retrieve message history of a session
+- DELETE /api/v1/sessions/{session_id}          - delete a session and its associated data
 
 Error handling (5th scenario):
 - 404 Not Found            - unknown session         (SessionNotFoundError)

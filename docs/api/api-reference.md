@@ -16,10 +16,10 @@ curl http://localhost:8000/api/v1/health   # -> 200 {"status": "ok"}
 | Method | Path | Headers | Body | Success |
 |---|---|---|---|---|
 | GET | `/api/v1/health` | none | N/A | 200 `{"status": "ok"}` |
-| POST | `/sessions` | none | N/A (empty) | 201 `{"id": 1, "session_token": "..."}` |
-| GET | `/sessions` | none | N/A | 200 `[{"id": 1, "session_token": "..."}]` |
-| GET | `/sessions/{session_id}/messages` | none | N/A | 200 `[{"id": 1, "content": "...", "session_id": 1}]` |
-| DELETE | `/sessions/{session_id}` | none | N/A | 204 (no body) |
+| POST | `/api/v1/sessions` | none | N/A (empty) | 201 `{"id": 1, "session_token": "..."}` |
+| GET | `/api/v1/sessions` | none | N/A | 200 `[{"id": 1, "session_token": "..."}]` |
+| GET | `/api/v1/sessions/{session_id}/messages` | none | N/A | 200 `[{"id": 1, "content": "...", "session_id": 1}]` |
+| DELETE | `/api/v1/sessions/{session_id}` | none | N/A | 204 (no body) |
 
 ## Errors
 
