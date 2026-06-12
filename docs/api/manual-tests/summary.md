@@ -1,7 +1,9 @@
 # ESBot API – Manual Test Summary
 
- 
-All tests returned the expected error code, the messages api is not useful because there is no endpoint for message creation implemented. The error codes provide enough feedback to pinpoint the underlying errors
+ Findings:
+- All tests returned the expected error code.
+- the messages api is not useful because there is no endpoint for message creation implemented.
+- The error codes provide enough feedback to pinpoint the underlying errors
 
 ---
 
