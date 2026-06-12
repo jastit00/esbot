@@ -19,3 +19,8 @@ register_exception_handlers(app)
 @app.get("/")
 def hello() -> dict[str, str]:
     return {"message": "Hello World"}
+
+
+@app.get("/api/v1/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
