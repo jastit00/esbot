@@ -1,20 +1,22 @@
 """
 REST API endpoints for ESBot.
 
-Endpoints (4):
-- POST   /api/v1/sessions                       - create a new learning session
-- GET    /api/v1/sessions                       - list all sessions
-- GET    /api/v1/sessions/{session_id}/messages - retrieve message history of a session
-- DELETE /api/v1/sessions/{session_id}          - delete a session and its associated data
+Endpoints:
+- POST   /api/v1/sessions                            - create a new learning session
+- GET    /api/v1/sessions                            - list all sessions
+- GET    /api/v1/sessions/{session_id}/messages      - retrieve message history of a session
+- DELETE /api/v1/sessions/{session_id}               - delete a session and its associated data
+- POST   /api/v1/sessions/{session_id}/messages      - send a message and receive an AI response
+- POST   /api/v1/sessions/{session_id}/quiz          - generate quiz questions for a topic
 
-Error handling (5th scenario):
+Error handling:
 - 404 Not Found            - unknown session         (SessionNotFoundError)
 - 422 Unprocessable Entity - invalid input           (FastAPI/Pydantic validation)
 - 503 Service Unavailable  - LLM inference engine    (LLMUnavailableError)
 """
 
 import uuid
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
@@ -24,15 +26,23 @@ from sqlmodel import Session as DBSession, select
 
 from backend.database import get_session
 from backend.models import Session, Message
+from backend.services.question_service import MockAIInference
+
+_mock_ai = MockAIInference()
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
 
 # ---------- Schemas ----------
 
+class SessionCreate(BaseModel):
+    user_id: Optional[str] = None
+
+
 class SessionRead(BaseModel):
     id: int
     session_token: str
+    user_id: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -45,6 +55,23 @@ class MessageRead(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class MessageCreate(BaseModel):
+    content: str
+
+
+class ChatResponse(BaseModel):
+    user_message: MessageRead
+    assistant_message: MessageRead
+
+
+class QuizCreate(BaseModel):
+    topic: str
+
+
+class QuizResponse(BaseModel):
+    questions: List[str]
 
 
 # ---------- Custom exceptions ----------
@@ -63,18 +90,22 @@ class LLMUnavailableError(Exception):
 
 # POST /sessions - create a new learning session
 @router.post("", response_model=SessionRead, status_code=status.HTTP_201_CREATED)
-def create_session(db: DBSession = Depends(get_session)) -> Session:
-    session = Session(session_token=str(uuid.uuid4()))
+def create_session(body: Optional[SessionCreate] = None, db: DBSession = Depends(get_session)) -> Session:
+    body = body or SessionCreate()
+    session = Session(session_token=str(uuid.uuid4()), user_id=body.user_id)
     db.add(session)
     db.commit()
     db.refresh(session)
     return session
 
 
-# GET /sessions - list all sessions
+# GET /sessions - list all sessions, optionally filtered by user_id
 @router.get("", response_model=List[SessionRead])
-def list_sessions(db: DBSession = Depends(get_session)) -> List[Session]:
-    return db.exec(select(Session)).all()
+def list_sessions(user_id: Optional[str] = None, db: DBSession = Depends(get_session)) -> List[Session]:
+    query = select(Session)
+    if user_id:
+        query = query.where(Session.user_id == user_id)
+    return db.exec(query).all()
 
 
 # GET /sessions/{session_id}/messages - retrieve message history of a session
@@ -93,6 +124,35 @@ def delete_session(session_id: int, db: DBSession = Depends(get_session)) -> Non
         raise SessionNotFoundError(session_id)
     db.delete(session)
     db.commit()
+
+
+# POST /sessions/{session_id}/messages - send a message and receive an AI response
+@router.post("/{session_id}/messages", response_model=ChatResponse, status_code=status.HTTP_201_CREATED)
+def send_message(session_id: int, body: MessageCreate, db: DBSession = Depends(get_session)) -> ChatResponse:
+    if db.get(Session, session_id) is None:
+        raise SessionNotFoundError(session_id)
+    user_msg = Message(content=body.content, session_id=session_id)
+    db.add(user_msg)
+    db.commit()
+    db.refresh(user_msg)
+    ai_text = _mock_ai.generate_answer(body.content)
+    bot_msg = Message(content=ai_text, session_id=session_id)
+    db.add(bot_msg)
+    db.commit()
+    db.refresh(bot_msg)
+    return ChatResponse(
+        user_message=MessageRead.model_validate(user_msg),
+        assistant_message=MessageRead.model_validate(bot_msg),
+    )
+
+
+# POST /sessions/{session_id}/quiz - generate quiz questions for a topic
+@router.post("/{session_id}/quiz", response_model=QuizResponse, status_code=status.HTTP_201_CREATED)
+def generate_quiz(session_id: int, body: QuizCreate, db: DBSession = Depends(get_session)) -> QuizResponse:
+    if db.get(Session, session_id) is None:
+        raise SessionNotFoundError(session_id)
+    questions = _mock_ai.generate_quiz(body.topic)
+    return QuizResponse(questions=questions)
 
 
 # ---------- Error handling registration ----------

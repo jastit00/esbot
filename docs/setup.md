@@ -36,6 +36,16 @@ uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 
 The API will be available at `http://localhost:8000`. Database tables are created automatically on startup.
 
+## Running the Frontend (devcontainer)
+
+After rebuilding the container (to install Node), in a second terminal:
+
+```bash
+cd frontend && npm run dev
+```
+
+The app will be available at `http://localhost:5173`. API requests are proxied to the backend automatically.
+
 ## Running Tests
 
 Tests use an SQLite in-memory database: no running PostgreSQL instance required.

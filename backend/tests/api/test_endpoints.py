@@ -158,6 +158,60 @@ def test_invalid_session_id_format(client: TestClient):
     assert data["error"] == "Invalid input"
 
 
+# ---------- Chat Tests ----------
+
+def test_send_message(client: TestClient):
+    """Test sending a message returns user and assistant messages."""
+    session_id = client.post("/api/v1/sessions").json()["id"]
+
+    response = client.post(f"/api/v1/sessions/{session_id}/messages", json={"content": "Hello"})
+    assert response.status_code == 201
+
+    data = response.json()
+    assert data["user_message"]["content"] == "Hello"
+    assert data["user_message"]["session_id"] == session_id
+    assert len(data["assistant_message"]["content"]) > 0
+    assert data["assistant_message"]["session_id"] == session_id
+
+
+def test_send_message_persists_in_history(client: TestClient):
+    """Test that sent messages appear in message history."""
+    session_id = client.post("/api/v1/sessions").json()["id"]
+    client.post(f"/api/v1/sessions/{session_id}/messages", json={"content": "Hello"})
+
+    response = client.get(f"/api/v1/sessions/{session_id}/messages")
+    assert response.status_code == 200
+    assert len(response.json()) == 2
+
+
+def test_send_message_session_not_found(client: TestClient):
+    """Test sending a message to a non-existing session returns 404."""
+    response = client.post("/api/v1/sessions/99999/messages", json={"content": "Hello"})
+    assert response.status_code == 404
+    assert response.json()["error"] == "Session not found"
+
+
+# ---------- Quiz Tests ----------
+
+def test_generate_quiz(client: TestClient):
+    """Test quiz generation returns a list of questions."""
+    session_id = client.post("/api/v1/sessions").json()["id"]
+
+    response = client.post(f"/api/v1/sessions/{session_id}/quiz", json={"topic": "Testing"})
+    assert response.status_code == 201
+
+    data = response.json()
+    assert isinstance(data["questions"], list)
+    assert len(data["questions"]) > 0
+
+
+def test_generate_quiz_session_not_found(client: TestClient):
+    """Test quiz generation for a non-existing session returns 404."""
+    response = client.post("/api/v1/sessions/99999/quiz", json={"topic": "Testing"})
+    assert response.status_code == 404
+    assert response.json()["error"] == "Session not found"
+
+
 
 """
 Tool Used: SWE-1.6 Slow
