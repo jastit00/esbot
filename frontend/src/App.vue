@@ -198,7 +198,7 @@ onMounted(() => {
       <main v-if="activeSession" class="main-content">
         <div class="tabs">
           <button :class="['tab', { active: view === 'chat' }]" @click="view = 'chat'">Chat</button>
-          <button :class="['tab', { active: view === 'quiz' }]" @click="view = 'quiz'">Quiz</button>
+          <button :class="['tab', { active: view === 'quiz' }]" @click="view = 'quiz'" data-testid="quiz-tab">Quiz</button>
         </div>
 
         <!-- Chat view -->
