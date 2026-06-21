@@ -6,6 +6,7 @@ Prerequisites:
 """
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -60,22 +61,31 @@ def test_quiz_generation(driver):
 
 
 def test_too_long_user_id_error(driver):
-    """Create a session with a very long user ID to get an error."""
+    """A very long user ID surfaces an error banner to the user.
+
+    The over-long id makes the session lookup URL exceed the dev-proxy header
+    limit (HTTP 431), so the request fails and the UI shows the error banner.
+
+    Note: we deliberately trigger the failing session lookup by blurring the
+    input (TAB) rather than clicking "New Session". Clicking would also fire a
+    successful POST /sessions (201) whose handler resets the shared error state,
+    racing the failing GET — that race makes the assertion flaky (it passed
+    headless but failed headed). Triggering only the failing path is
+    deterministic across headless and headed runs.
+    """
     wait = WebDriverWait(driver, 15)
 
     # Wait for health status to be hidden (backend connected)
     wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, '[data-testid="health-status"]')))
-    
+
     user_id_input = driver.find_element(By.CSS_SELECTOR, '[data-testid="user-id-input"]')
     user_id_input.send_keys("a" * 20000)
-    driver.find_element(By.CSS_SELECTOR, '[data-testid="new-session-btn"]').click()
+    user_id_input.send_keys(Keys.TAB)  # blur -> @change -> session lookup -> 431
 
-    error_banner = driver.find_element(By.CSS_SELECTOR, '[data-testid="error-banner"]')
-    assert error_banner is not None
-    # Verify that the server responded with HTTP 431 (Request Header Fields Too Large)
-    #response = driver.execute_script("return window.performance.getEntriesByType('navigation')[0]")
-    #print(response)
-    #assert response["responseStatus"] == 431
+    error_banner = wait.until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-testid="error-banner"]'))
+    )
+    assert error_banner.is_displayed()
 
 
 """

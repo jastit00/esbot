@@ -37,7 +37,11 @@ def driver(base_url: str):
         )
 
     options = Options()
-    options.add_argument("--headless=new")
+    # Headless by default (CI-style). Set ESBOT_HEADLESS=0 to watch the tests
+    # run in a visible Chrome window (interactive/headed mode).
+    headless = os.environ.get("ESBOT_HEADLESS", "1").lower() not in {"0", "false", "no"}
+    if headless:
+        options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--window-size=1280,900")
